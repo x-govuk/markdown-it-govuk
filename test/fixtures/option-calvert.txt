@@ -1,0 +1,17 @@
+.
+1/2 2/3
+.
+<p class="govuk-body">½ ⅔</p>
+.
+
+.
+<<Bonjour!>>
+.
+<p class="govuk-body">«Bonjour!»</p>
+.
+
+.
+1 x 2 = 3 => 2+-
+.
+<p class="govuk-body">1 × 2 = 3 ≥ 2±</p>
+.
