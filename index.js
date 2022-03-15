@@ -67,6 +67,9 @@ module.exports = function plugin (md, pluginOptions = {}) {
   // Block code (indented, not fenced)
   addClassesToRule(md, 'code_block', 'govuk-inset-text govuk-!-margin-left-0')
 
+  // Inline code
+  addClassesToRule(md, 'code_inline', 'x-govuk-code x-govuk-code--inline')
+
   // Paragraphs
   addClassesToRule(md, 'paragraph_open', 'govuk-body')
 

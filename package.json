@@ -13,13 +13,18 @@
     "url": "https://github.com/x-govuk/markdown-it-govuk/issues"
   },
   "license": "MIT",
+  "files": [
+    "lib",
+    "x-govuk"
+  ],
   "main": "index.js",
+  "sass": "x-govuk/all.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/x-govuk/markdown-it-govuk.git"
   },
   "scripts": {
-    "lint": "standard",
+    "lint": "standard && stylelint 'x-govuk/**/*.scss'",
     "test": "mocha",
     "test:watch": "mocha --watch",
     "coverage": "c8 mocha"
@@ -27,20 +32,38 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "highlight.js": "^11.5.0"
+  },
   "devDependencies": {
     "c8": "^7.11.0",
     "markdown-it": "^12.3.2",
     "markdown-it-testgen": "^0.1.6",
     "mocha": "^9.2.2",
-    "standard": "^16.0.4"
+    "standard": "^16.0.4",
+    "stylelint": "^13.13.1",
+    "stylelint-config-gds": "^0.1.0"
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.js"
+    },
+    "./highlight": {
+      "import": "./lib/highlight.js",
+      "require": "./lib/highlight.js"
+    }
   },
   "c8": {
     "reporter": [
       "text",
       "lcovonly"
     ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-gds/scss"
   }
 }

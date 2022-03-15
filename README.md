@@ -32,6 +32,41 @@ Will output:
 <p class="govuk-body"><a class="govuk-link" href="/foo">A link</a></p>
 ```
 
+### Code highlighting
+
+Fenced code blocks can he highlighted using the supplied `highlight` function:
+
+```js
+const md = require('markdown-it')({
+  highlight: require('markdown-it/highlight')
+});
+
+
+md.use(require('markdown-it-govuk'))
+```
+
+For example:
+
+```js
+md.render('```js\nconsole.log(\'Hello, World!\')\n```')
+```
+
+Will output:
+
+```html
+<pre class="x-govuk-code x-govuk-code--block" tabindex="0">
+  <code class="x-govuk-code__language--js">
+    <span class="x-govuk-code__variable">console</span>.<span class="x-govuk-code__title">log</span>(<span class="x-govuk-code__string">'Hello, World!'</span>)
+  </code>
+</pre>
+```
+
+To provide styling for inline and block code, add the following to your Sass file:
+
+```scss
+@import "markdown-it-govuk/x-govuk/all";
+```
+
 ## Options
 
 | Name | Type | Description |
