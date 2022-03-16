@@ -96,7 +96,7 @@ module.exports = function plugin (md, pluginOptions = {}) {
   md.renderer.rules.text = (tokens, idx, options, env, self) => {
     const { calvert } = pluginOptions
 
-    const improveAll = !Array.isArray(calvert)
+    const improveAll = !Array.isArray(calvert) && calvert === true
     const improveFractions = Array.isArray(calvert) && calvert.includes('fractions')
     const improveGuillemets = Array.isArray(calvert) && calvert.includes('guillemets')
     const improveMathematical = Array.isArray(calvert) && calvert.includes('mathematical')
