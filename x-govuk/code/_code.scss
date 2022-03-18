@@ -1,7 +1,7 @@
 .x-govuk-code {
+  @include govuk-font(16);
   background-color: govuk-colour("light-grey");
   font-family: ui-monospace, monospace;
-  font-size: 16px;
 }
 
 .x-govuk-code--inline {
