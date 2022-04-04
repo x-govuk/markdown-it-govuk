@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-govuk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Plugin for markdown-it to convert Markdown into GOV.UK Frontend-compliant HTML",
   "keywords": [
     "govuk",
