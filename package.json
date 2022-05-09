@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "c8": "^7.11.0",
-    "markdown-it": "^12.3.2",
+    "markdown-it": "^13.0.1",
     "markdown-it-testgen": "^0.1.6",
     "mocha": "^9.2.2",
     "standard": "^16.0.4",
