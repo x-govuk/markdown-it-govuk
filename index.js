@@ -22,7 +22,14 @@ const getDefaultRenderer = (md, rule) => {
 const addClassesToRule = (md, rule, classes) => {
   const defaultRenderer = getDefaultRenderer(md, rule)
   md.renderer.rules[rule] = (tokens, idx, options, env, self) => {
-    tokens[idx].attrPush(['class', classes])
+    const token = tokens[idx]
+
+    if (token.attrGet('class')) {
+      token.attrJoin('class', classes)
+    } else {
+      token.attrPush(['class', classes])
+    }
+
     return defaultRenderer(tokens, idx, options, env, self)
   }
 }
