@@ -42,7 +42,7 @@
     "mocha": "^10.0.0",
     "standard": "^17.0.0",
     "stylelint": "^14.6.1",
-    "stylelint-config-gds": "^0.2.0"
+    "stylelint-config-gds": "^0.3.0"
   },
   "engines": {
     "node": ">=16.0.0"
