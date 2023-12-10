@@ -25,9 +25,8 @@
   },
   "scripts": {
     "lint": "standard && stylelint 'x-govuk/**/*.scss'",
-    "test": "mocha",
-    "test:watch": "mocha --watch",
-    "coverage": "c8 mocha"
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage"
   },
   "publishConfig": {
     "access": "public"
@@ -36,10 +35,8 @@
     "highlight.js": "^11.5.0"
   },
   "devDependencies": {
-    "c8": "^7.11.0",
     "markdown-it": "^13.0.1",
     "markdown-it-testgen": "^0.1.6",
-    "mocha": "^10.0.0",
     "standard": "^17.0.0",
     "stylelint": "^14.6.1",
     "stylelint-config-gds": "^0.2.0"
@@ -56,12 +53,6 @@
       "import": "./lib/highlight.js",
       "require": "./lib/highlight.js"
     }
-  },
-  "c8": {
-    "reporter": [
-      "text",
-      "lcovonly"
-    ]
   },
   "stylelint": {
     "extends": "stylelint-config-gds/scss"
