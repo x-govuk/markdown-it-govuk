@@ -36,7 +36,7 @@
     "highlight.js": "^11.5.0"
   },
   "devDependencies": {
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^14.0.0",
     "markdown-it-testgen": "^0.1.6",
     "np": "^9.2.0",
     "prettier": "^3.1.0",
