@@ -24,7 +24,7 @@
     "url": "https://github.com/x-govuk/markdown-it-govuk.git"
   },
   "scripts": {
-    "lint": "standard && stylelint 'x-govuk/**/*.scss'",
+    "lint": "prettier . --check && standard && stylelint 'x-govuk/**/*.scss'",
     "test": "node --test",
     "coverage": "node --test --experimental-test-coverage",
     "release": "np"
@@ -39,9 +39,10 @@
     "markdown-it": "^13.0.1",
     "markdown-it-testgen": "^0.1.6",
     "np": "^9.2.0",
+    "prettier": "^3.1.0",
     "standard": "^17.0.0",
-    "stylelint": "^14.6.1",
-    "stylelint-config-gds": "^0.2.0"
+    "stylelint": "^15.0.0",
+    "stylelint-config-gds": "^1.1.0"
   },
   "engines": {
     "node": ">=18"
@@ -55,6 +56,26 @@
       "import": "./lib/highlight.js",
       "require": "./lib/highlight.js"
     }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "overrides": [
+      {
+        "files": "*.md",
+        "options": {
+          "embeddedLanguageFormatting": "off",
+          "singleQuote": false
+        }
+      },
+      {
+        "files": "*.scss",
+        "options": {
+          "singleQuote": false
+        }
+      }
+    ]
   },
   "stylelint": {
     "extends": "stylelint-config-gds/scss"
