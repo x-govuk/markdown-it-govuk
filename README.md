@@ -39,8 +39,7 @@ Fenced code blocks can he highlighted using the supplied `highlight` function:
 ```js
 const md = require('markdown-it')({
   highlight: require('markdown-it/highlight')
-});
-
+})
 
 md.use(require('markdown-it-govuk'))
 ```
