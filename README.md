@@ -47,9 +47,9 @@ md.use(require('markdown-it-govuk'))
 
 For example:
 
-```js
+````js
 md.render('```js\nconsole.log(\'Hello, World!\')\n```')
-```
+````
 
 Will output:
 
@@ -69,10 +69,10 @@ To provide styling for inline and block code, add the following to your Sass fil
 
 ## Options
 
-| Name | Type | Description |
-| - | - | - |
-| `headingsStartWith` | `string` | Heading size to use for the top-level heading (`xl` or `l`). Default is `l`. |
-| `calvert` | `boolean \| Array` | Typographic improvements to enable (in addition to those provided by markdown-it’s `typographer` option). Set this option to `true` to enable all improvements, or array containing individual improvement sets to include (choose from `fractions`, `guillemets` and `mathematical`). Default is `false`. |
+| Name                | Type               | Description                                                                                                                                                                                                                                                                                                |
+| ------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `headingsStartWith` | `string`           | Heading size to use for the top-level heading (`xl` or `l`). Default is `l`.                                                                                                                                                                                                                               |
+| `calvert`           | `boolean \| Array` | Typographic improvements to enable (in addition to those provided by markdown-it’s `typographer` option). Set this option to `true` to enable all improvements, or array containing individual improvement sets to include (choose from `fractions`, `guillemets` and `mathematical`). Default is `false`. |
 
 ### Heading sizes
 
