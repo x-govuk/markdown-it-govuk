@@ -1,48 +1,36 @@
-const { describe } = require('mocha')
+const assert = require('node:assert')
+const { it, describe } = require('node:test')
 const testGenerator = require('markdown-it-testgen')
+const markdownIt = require('markdown-it')
 
-describe('Converts Markdown into GOV.UK Frontend-compliant HTML', () => {
-  const md = require('markdown-it')().use(require('../index.js'))
+// `testGenerator` uses Mocha internally, but we’re using node:test
+global.describe = describe
+global.it = it
 
-  testGenerator('./test/fixtures/govuk.txt', md)
+const testMarkdown = (path, options = {}) => {
+  const md = markdownIt().use(require('../index.js'), options)
+
+  testGenerator(path, { assert }, md)
+}
+
+testMarkdown('./test/fixtures/govuk.txt')
+
+testMarkdown('./test/fixtures/option-heading-starts-with.txt', {
+  headingsStartWith: 'xl'
 })
 
-describe('Starts headings with xl size', () => {
-  const md = require('markdown-it')().use(require('../index.js'), {
-    headingsStartWith: 'xl'
-  })
-
-  testGenerator('./test/fixtures/option-heading-starts-with.txt', md)
+testMarkdown('./test/fixtures/option-calvert.txt', {
+  calvert: true
 })
 
-describe('Improves all typography', () => {
-  const md = require('markdown-it')().use(require('../index.js'), {
-    calvert: true
-  })
-
-  testGenerator('./test/fixtures/option-calvert.txt', md)
+testMarkdown('./test/fixtures/option-calvert-fractions.txt', {
+  calvert: ['fractions']
 })
 
-describe('Improves typography (fractions only)', () => {
-  const md = require('markdown-it')().use(require('../index.js'), {
-    calvert: ['fractions']
-  })
-
-  testGenerator('./test/fixtures/option-calvert-fractions.txt', md)
+testMarkdown('./test/fixtures/option-calvert-guillemets.txt', {
+  calvert: ['guillemets']
 })
 
-describe('Improves typography (guillemets only)', () => {
-  const md = require('markdown-it')().use(require('../index.js'), {
-    calvert: ['guillemets']
-  })
-
-  testGenerator('./test/fixtures/option-calvert-guillemets.txt', md)
-})
-
-describe('Improves typography (mathematical symbols only)', () => {
-  const md = require('markdown-it')().use(require('../index.js'), {
-    calvert: ['mathematical']
-  })
-
-  testGenerator('./test/fixtures/option-calvert-mathematical.txt', md)
+testMarkdown('./test/fixtures/option-calvert-mathematical.txt', {
+  calvert: ['mathematical']
 })
