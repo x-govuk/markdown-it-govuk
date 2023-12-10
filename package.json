@@ -26,7 +26,8 @@
   "scripts": {
     "lint": "standard && stylelint 'x-govuk/**/*.scss'",
     "test": "node --test",
-    "coverage": "node --test --experimental-test-coverage"
+    "coverage": "node --test --experimental-test-coverage",
+    "release": "np"
   },
   "publishConfig": {
     "access": "public"
@@ -37,6 +38,7 @@
   "devDependencies": {
     "markdown-it": "^13.0.1",
     "markdown-it-testgen": "^0.1.6",
+    "np": "^9.2.0",
     "standard": "^17.0.0",
     "stylelint": "^14.6.1",
     "stylelint-config-gds": "^0.2.0"
