@@ -25,7 +25,7 @@
   },
   "scripts": {
     "prelint": "prettier . --check",
-    "lint": "eslint && stylelint 'x-govuk/**/*.scss'",
+    "lint": "eslint '**/*.js' && stylelint 'x-govuk/**/*.scss'",
     "test": "node --test",
     "coverage": "node --test --experimental-test-coverage",
     "release": "np"
