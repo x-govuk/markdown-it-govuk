@@ -24,8 +24,10 @@
     "url": "https://github.com/x-govuk/markdown-it-govuk.git"
   },
   "scripts": {
-    "prelint": "prettier . --check",
-    "lint": "eslint '**/*.js' && stylelint 'x-govuk/**/*.scss'",
+    "lint:prettier": "prettier . --check",
+    "lint:js": "eslint '**/*.js'",
+    "lint:scss": "stylelint '**/*.scss'",
+    "lint": "npm run lint:prettier && npm run lint:js && npm run lint:scss",
     "test": "node --test",
     "coverage": "node --test --experimental-test-coverage",
     "release": "np"
@@ -37,11 +39,15 @@
     "highlight.js": "^11.5.0"
   },
   "devDependencies": {
-    "@types/markdown-it": "^13.0.7",
+    "@types/markdown-it": "^13.0.0",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsdoc": "^46.9.0",
+    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-promise": "^6.1.0",
     "markdown-it": "^14.0.0",
     "markdown-it-testgen": "^0.1.6",
     "np": "^9.2.0",
@@ -61,38 +67,5 @@
       "import": "./lib/highlight.js",
       "require": "./lib/highlight.js"
     }
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "none",
-    "overrides": [
-      {
-        "files": "*.md",
-        "options": {
-          "embeddedLanguageFormatting": "off",
-          "singleQuote": false
-        }
-      },
-      {
-        "files": "*.scss",
-        "options": {
-          "singleQuote": false
-        }
-      }
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:jsdoc/recommended-typescript-flavor",
-      "standard",
-      "prettier"
-    ]
-  },
-  "stylelint": {
-    "extends": "stylelint-config-gds/scss"
   }
 }
