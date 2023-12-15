@@ -5,9 +5,12 @@
  * @returns {Function} Renderer for the given rule
  */
 const getDefaultRenderer = (md, rule) => {
-  return md.renderer.rules[rule] || function (tokens, idx, options, env, self) {
-    return self.renderToken(tokens, idx, options)
-  }
+  return (
+    md.renderer.rules[rule] ||
+    function (tokens, idx, options, env, self) {
+      return self.renderToken(tokens, idx, options)
+    }
+  )
 }
 
 /**
@@ -43,7 +46,7 @@ const defaultOptions = {
  * @param {import('markdown-it')} md markdown-it instance
  * @param {object} pluginOptions Plugin options
  */
-module.exports = function plugin (md, pluginOptions = {}) {
+module.exports = function plugin(md, pluginOptions = {}) {
   // Merge options
   pluginOptions = { ...defaultOptions, ...pluginOptions }
 
@@ -52,11 +55,7 @@ module.exports = function plugin (md, pluginOptions = {}) {
   md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
     // Headings can start with either `xl` or `l` size modifier
     const { headingsStartWith } = pluginOptions
-    const modifiers = [
-      ...(headingsStartWith === 'xl' ? ['xl'] : []),
-      'l',
-      'm'
-    ]
+    const modifiers = [...(headingsStartWith === 'xl' ? ['xl'] : []), 'l', 'm']
     const level = tokens[idx].tag.replace(/^h(:?\d{1}?)/, '$1')
     const headingLevel = Number(level)
     const modifier = modifiers[headingLevel - 1] || 's'
@@ -65,7 +64,11 @@ module.exports = function plugin (md, pluginOptions = {}) {
   }
 
   // Block quotes
-  addClassesToRule(md, 'blockquote_open', 'govuk-inset-text govuk-!-margin-left-0')
+  addClassesToRule(
+    md,
+    'blockquote_open',
+    'govuk-inset-text govuk-!-margin-left-0'
+  )
 
   // Block code (indented, not fenced)
   addClassesToRule(md, 'code_block', 'govuk-inset-text govuk-!-margin-left-0')
@@ -84,7 +87,11 @@ module.exports = function plugin (md, pluginOptions = {}) {
   addClassesToRule(md, 'ordered_list_open', 'govuk-list govuk-list--number')
 
   // Section break
-  addClassesToRule(md, 'hr', 'govuk-section-break govuk-section-break--xl govuk-section-break--visible')
+  addClassesToRule(
+    md,
+    'hr',
+    'govuk-section-break govuk-section-break--xl govuk-section-break--visible'
+  )
 
   // Tables
   addClassesToRule(md, 'table_open', 'govuk-table')
@@ -100,9 +107,12 @@ module.exports = function plugin (md, pluginOptions = {}) {
     const { calvert } = pluginOptions
 
     const improveAll = !Array.isArray(calvert) && calvert === true
-    const improveFractions = Array.isArray(calvert) && calvert.includes('fractions')
-    const improveGuillemets = Array.isArray(calvert) && calvert.includes('guillemets')
-    const improveMathematical = Array.isArray(calvert) && calvert.includes('mathematical')
+    const improveFractions =
+      Array.isArray(calvert) && calvert.includes('fractions')
+    const improveGuillemets =
+      Array.isArray(calvert) && calvert.includes('guillemets')
+    const improveMathematical =
+      Array.isArray(calvert) && calvert.includes('mathematical')
 
     // Improve fractions
     if (improveAll || improveFractions) {
