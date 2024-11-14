@@ -1,7 +1,8 @@
 const assert = require('node:assert')
 const { it, describe } = require('node:test')
-const testGenerator = require('markdown-it-testgen')
+
 const markdownIt = require('markdown-it')
+const testGenerator = require('markdown-it-testgen')
 
 // `testGenerator` uses Mocha internally, but we’re using node:test
 global.describe = describe

@@ -1,8 +1,9 @@
 /**
- * Get default renderer for given markdown-it rule.
- * @param {import('markdown-it')} md markdown-it instance
- * @param {string} rule Rule to modify
- * @returns {Function} Renderer for the given rule
+ * Get default renderer for given markdown-it rule
+ *
+ * @param {import('markdown-it')} md - markdown-it instance
+ * @param {string} rule - Rule to modify
+ * @returns {Function} - Renderer for the given rule
  */
 const getDefaultRenderer = (md, rule) => {
   return (
@@ -14,10 +15,11 @@ const getDefaultRenderer = (md, rule) => {
 }
 
 /**
- * Add classes to a token’s class attribute in given markdown-it rule.
- * @param {import('markdown-it')} md markdown-it instance
- * @param {string} rule Rule to modify
- * @param {string} classes Classes to add to the rule’s token
+ * Add classes to a token’s class attribute in given markdown-it rule
+ *
+ * @param {import('markdown-it')} md - markdown-it instance
+ * @param {string} rule - Rule to modify
+ * @param {string} classes - Classes to add to the rule’s token
  */
 const addClassesToRule = (md, rule, classes) => {
   const defaultRenderer = getDefaultRenderer(md, rule)
@@ -42,9 +44,10 @@ const defaultOptions = {
 /**
  * Adds GOV.UK typography classes to blockquotes, headings, paragraphs, links,
  * lists, section breaks and tables and updates references to local files in
- * links and images to friendly URLs.
- * @param {import('markdown-it')} md markdown-it instance
- * @param {object} pluginOptions Plugin options
+ * links and images to friendly URLs
+ *
+ * @param {import('markdown-it')} md - markdown-it instance
+ * @param {object} pluginOptions - Plugin options
  */
 module.exports = function plugin(md, pluginOptions = {}) {
   // Merge options
