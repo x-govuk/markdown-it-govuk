@@ -49,7 +49,7 @@ const defaultOptions = {
  * @param {import('markdown-it')} md - markdown-it instance
  * @param {object} pluginOptions - Plugin options
  */
-module.exports = function plugin(md, pluginOptions = {}) {
+export default function (md, pluginOptions = {}) {
   // Merge options
   pluginOptions = { ...defaultOptions, ...pluginOptions }
 
