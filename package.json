@@ -15,9 +15,9 @@
   "license": "MIT",
   "files": [
     "lib",
-    "x-govuk"
+    "x-govuk",
+    "index.js"
   ],
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/x-govuk/markdown-it-govuk.git"
@@ -55,15 +55,14 @@
   "engines": {
     "node": ">=18"
   },
+  "type": "module",
   "exports": {
     ".": {
       "import": "./index.js",
-      "require": "./index.js",
       "sass": "./x-govuk/index.scss"
     },
     "./highlight": {
-      "import": "./lib/highlight.js",
-      "require": "./lib/highlight.js"
+      "import": "./lib/highlight.js"
     }
   }
 }

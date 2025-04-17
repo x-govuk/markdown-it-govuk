@@ -1,17 +1,19 @@
-const assert = require('node:assert')
-const { it, describe } = require('node:test')
+import test from 'node:test'
 
-const markdownIt = require('markdown-it')
-const testGenerator = require('markdown-it-testgen')
+import markdownit from 'markdown-it'
+import testGenerator from 'markdown-it-testgen'
 
-// `testGenerator` uses Mocha internally, but we’re using node:test
-global.describe = describe
-global.it = it
+import markdownitGovuk from '../index.js'
+
+// markdown-it-testgen expects Mocha to have set the following globals
+globalThis.describe = test.describe
+globalThis.it = test.it
 
 const testMarkdown = (path, options = {}) => {
-  const md = markdownIt().use(require('../index.js'), options)
+  const md = markdownit()
+  md.use(markdownitGovuk, options)
 
-  testGenerator(path, { assert }, md)
+  testGenerator(path, md)
 }
 
 testMarkdown('./test/fixtures/govuk.txt')
