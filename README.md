@@ -15,9 +15,10 @@ Node.js v18 or later.
 ## Usage
 
 ```js
-const md = require('markdown-it')
+import markdownit from 'markdown-it'
+import markdownitGovuk from 'markdown-it-govuk'
 
-md.use(require('markdown-it-govuk'))
+const md = markdownit.use(markdownitGovuk)
 ```
 
 The generated HTML will include the classes from GOV.UK Frontend. For example:
@@ -37,11 +38,15 @@ Will output:
 Fenced code blocks can he highlighted using the supplied `highlight` function:
 
 ```js
-const md = require('markdown-it')({
-  highlight: require('markdown-it/highlight')
+import markdownit from 'markdown-it'
+import markdownitGovuk from 'markdown-it-govuk'
+import highlight from 'markdown-it-govuk/highlight'
+
+const md = markdownit({
+  highlight
 })
 
-md.use(require('markdown-it-govuk'))
+md.use(markdownitGovuk)
 ```
 
 For example:
@@ -80,11 +85,14 @@ Headings start with `govuk-heading-l` for an `<h1>`, `govuk-heading-m` for an `<
 To start pages with `govuk-heading-xl` for an `<h1>`, `govuk-heading-l` for an `<h2>`, and so on, set the `headingsStartWith` option to `xl`:
 
 ```js
-md.use(require('markdown-it-govuk'), {
+import markdownit from 'markdown-it'
+import markdownitGovuk from 'markdown-it-govuk'
+
+const md = markdownit.use(markdownitGovuk, {
   headingsStartWith: 'xl'
 })
 
-marked('# Heading\n## Heading 2')
+md.render('# Heading\n## Heading 2')
 ```
 
 Will output:
@@ -101,11 +109,14 @@ In addition to the typographic replacements provided by markdown-it’s `typogra
 For example:
 
 ```js
-md.use(require('markdown-it-govuk'), {
+import markdownit from 'markdown-it'
+import markdownitGovuk from 'markdown-it-govuk'
+
+const md = markdownit.use(markdownitGovuk, {
   calvert: ['fractions', 'mathematical']
 })
 
-marked('1/2 x 1/2 = 1/4')
+md.render('1/2 x 1/2 = 1/4')
 ```
 
 Will output the following text, with the common fractions and correct multiplication symbol:
