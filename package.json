@@ -54,7 +54,7 @@
     "stylelint-order": "^6.0.4"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "exports": {
     ".": {
