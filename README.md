@@ -63,7 +63,7 @@ Will output:
 To provide styling for inline and block code, add the following to your Sass file:
 
 ```scss
-@import "markdown-it-govuk/x-govuk/all";
+@import "markdown-it-govuk/x-govuk/index";
 ```
 
 ## Options
