@@ -71,6 +71,12 @@ To provide styling for inline and block code, add the following to your Sass fil
 @import "markdown-it-govuk/x-govuk/index";
 ```
 
+or
+
+```scss
+@forward "markdown-it-govuk/x-govuk";
+```
+
 ## Options
 
 | Name                | Type               | Description                                                                                                                                                                                                                                                                                                |

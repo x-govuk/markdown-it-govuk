@@ -39,6 +39,7 @@
     "access": "public"
   },
   "dependencies": {
+    "govuk-frontend": "^5.0.0",
     "highlight.js": "^11.5.0"
   },
   "devDependencies": {

@@ -1,6 +1,8 @@
+@use "govuk-frontend/dist/govuk" as *;
+
 // Use same colour for inline code as that used on GOV.UK Design System site.
 // https://github.com/alphagov/govuk-design-system/blob/main/src/stylesheets/main.scss
-$x-govuk-code-color: #d13118;
+$_code-color: #d13118;
 
 .x-govuk-code--inline,
 .x-govuk-code--block {
@@ -10,7 +12,7 @@ $x-govuk-code-color: #d13118;
 
 .x-govuk-code--inline {
   background-color: govuk-colour("light-grey");
-  color: $x-govuk-code-color;
+  color: $_code-color;
   font-size: 0.875em;
   padding: 2px govuk-spacing(1);
 
