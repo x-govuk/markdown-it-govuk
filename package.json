@@ -14,8 +14,7 @@
   },
   "license": "MIT",
   "files": [
-    "lib",
-    "x-govuk",
+    "src",
     "index.js"
   ],
   "repository": {
@@ -60,10 +59,10 @@
   "exports": {
     ".": {
       "import": "./index.js",
-      "sass": "./x-govuk/index.scss"
+      "sass": "./src/_index.scss"
     },
     "./highlight": {
-      "import": "./lib/highlight.js"
+      "import": "./src/highlight.js"
     }
   }
 }

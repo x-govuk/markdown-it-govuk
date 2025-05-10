@@ -68,13 +68,13 @@ Will output:
 To provide styling for inline and block code, add the following to your Sass file:
 
 ```scss
-@import "markdown-it-govuk/x-govuk/index";
+@import "markdown-it-govuk/src/index";
 ```
 
-or
+or using the Sass module system and `pkg:` importing:
 
 ```scss
-@forward "markdown-it-govuk/x-govuk";
+@forward "pkg:markdown-it-govuk";
 ```
 
 ## Options
