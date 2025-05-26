@@ -5,7 +5,7 @@ export const brands = {
     rules: {
       blockquote_open: 'govuk-inset-text govuk-!-margin-left-0',
       code_block: 'govuk-inset-text govuk-!-margin-left-0',
-      code_inline: 'x-govuk-code x-govuk-code--inline',
+      code_inline: 'app-code app-code--inline',
       paragraph_open: 'govuk-body',
       link_open: 'govuk-link',
       bullet_list_open: 'govuk-list govuk-list--bullet',
@@ -25,7 +25,7 @@ export const brands = {
     rules: {
       blockquote_open: 'nhsuk-inset-text nhsuk-u-margin-left-0',
       code_block: 'nhsuk-inset-text nhsuk-u-margin-left-0',
-      code_inline: 'x-govuk-code x-govuk-code--inline',
+      code_inline: 'app-code app-code--inline',
       paragraph_open: 'nhsuk-body',
       link_open: 'nhsuk-link',
       bullet_list_open: 'nhsuk-list nhsuk-list--bullet',
