@@ -1,3 +1,5 @@
+import { brands } from './src/brands.js'
+
 /**
  * Get default renderer for given markdown-it rule
  *
@@ -37,6 +39,7 @@ const addClassesToRule = (md, rule, classes) => {
 }
 
 const defaultOptions = {
+  brand: 'govuk',
   headingsStartWith: 'l',
   calvert: false
 }
@@ -53,56 +56,37 @@ export default function (md, pluginOptions = {}) {
   // Merge options
   pluginOptions = { ...defaultOptions, ...pluginOptions }
 
+  // Get brand config
+  const brand = brands[pluginOptions.brand]
+
   // Headings
   const headingRenderer = getDefaultRenderer(md, 'heading_open')
   md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
-    // Headings can start with either `xl` or `l` size modifier
     const { headingsStartWith } = pluginOptions
-    const modifiers = [...(headingsStartWith === 'xl' ? ['xl'] : []), 'l', 'm']
+    let { headingModifiers, headingPrefix } = brand
+
+    // Start headings with configured starting modifier
+    const startModifierIndex = brand.headingModifiers.indexOf(headingsStartWith)
+    if (startModifierIndex !== -1) {
+      headingModifiers = brand.headingModifiers.slice(startModifierIndex)
+    }
+
+    // Get heading level
     const level = tokens[idx].tag.replace(/^h(:?\d{1}?)/, '$1')
     const headingLevel = Number(level)
-    const modifier = modifiers[headingLevel - 1] || 's'
-    tokens[idx].attrPush(['class', `govuk-heading-${modifier}`])
+
+    // Apply heading class with size modifier
+    const modifier =
+      headingModifiers[headingLevel - 1] || headingModifiers.at(-1)
+
+    tokens[idx].attrPush(['class', `${headingPrefix}${modifier}`])
     return headingRenderer(tokens, idx, options, env, self)
   }
 
-  // Block quotes
-  addClassesToRule(
-    md,
-    'blockquote_open',
-    'govuk-inset-text govuk-!-margin-left-0'
-  )
-
-  // Block code (indented, not fenced)
-  addClassesToRule(md, 'code_block', 'govuk-inset-text govuk-!-margin-left-0')
-
-  // Inline code
-  addClassesToRule(md, 'code_inline', 'x-govuk-code x-govuk-code--inline')
-
-  // Paragraphs
-  addClassesToRule(md, 'paragraph_open', 'govuk-body')
-
-  // Links
-  addClassesToRule(md, 'link_open', 'govuk-link')
-
-  // Lists
-  addClassesToRule(md, 'bullet_list_open', 'govuk-list govuk-list--bullet')
-  addClassesToRule(md, 'ordered_list_open', 'govuk-list govuk-list--number')
-
-  // Section break
-  addClassesToRule(
-    md,
-    'hr',
-    'govuk-section-break govuk-section-break--xl govuk-section-break--visible'
-  )
-
-  // Tables
-  addClassesToRule(md, 'table_open', 'govuk-table')
-  addClassesToRule(md, 'thead_open', 'govuk-table__head')
-  addClassesToRule(md, 'tbody_open', 'govuk-table__body')
-  addClassesToRule(md, 'tr_open', 'govuk-table__row')
-  addClassesToRule(md, 'th_open', 'govuk-table__header')
-  addClassesToRule(md, 'td_open', 'govuk-table__cell')
+  // Add classes to rules
+  for (const [key, value] of Object.entries(brand.rules)) {
+    addClassesToRule(md, key, value)
+  }
 
   // Text replacements
   const defaultTextRenderer = getDefaultRenderer(md, 'text')
