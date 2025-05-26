@@ -77,6 +77,8 @@ or using the Sass module system and `pkg:` importing:
 @forward "pkg:markdown-it-govuk";
 ```
 
+These styles rely on `govuk-frontend`, so make sure you have this installed as a dependency in your project.
+
 ## Options
 
 | Name                | Type               | Description                                                                                                                                                                                                                                                                                           |
