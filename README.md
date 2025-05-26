@@ -58,9 +58,9 @@ md.render('```js\nconsole.log(\'Hello, World!\')\n```')
 Will output:
 
 ```html
-<pre class="x-govuk-code x-govuk-code--block" tabindex="0">
-  <code class="x-govuk-code__language--js">
-    <span class="x-govuk-code__variable">console</span>.<span class="x-govuk-code__title">log</span>(<span class="x-govuk-code__string">'Hello, World!'</span>)
+<pre class="app-code app-code--block" tabindex="0">
+  <code class="app-code__language--js">
+    <span class="app-code__variable">console</span>.<span class="app-code__title">log</span>(<span class="app-code__string">'Hello, World!'</span>)
   </code>
 </pre>
 ```
