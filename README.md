@@ -1,6 +1,6 @@
 # markdown-it-govuk · [![test](https://github.com/x-govuk/markdown-it-govuk/actions/workflows/test.yml/badge.svg)](https://github.com/x-govuk/markdown-it-govuk/actions/workflows/test.yml)
 
-Plugin for [markdown-it](https://github.com/markdown-it/markdown-it) to convert Markdown into GOV.UK Frontend-compliant HTML, inspired by its Ruby equivalent gem [`govuk_markdown`](https://github.com/DFE-Digital/govuk_markdown). If you are using the [marked](https://marked.js.org/) parser, use [`govuk-markdown`](https://github.com/x-govuk/govuk-markdown).
+Plugin for [markdown-it](https://github.com/markdown-it/markdown-it) to convert Markdown into GOV.UK Frontend-compliant HTML, inspired by the [`govuk_markdown`](https://github.com/DFE-Digital/govuk_markdown) Ruby gem. If you are using the [marked](https://marked.js.org/) parser, use [`govuk-markdown`](https://github.com/x-govuk/govuk-markdown).
 
 Don’t confuse this package with [govspeak](https://github.com/alphagov/govspeak), which is a Markdown dialect specifically built for the GOV.UK publishing system.
 
@@ -79,10 +79,10 @@ or using the Sass module system and `pkg:` importing:
 
 ## Options
 
-| Name                | Type               | Description                                                                                                                                                                                                                                                                                                |
-| ------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `headingsStartWith` | `string`           | Heading size to use for the top-level heading (`xl` or `l`). Default is `l`.                                                                                                                                                                                                                               |
-| `calvert`           | `boolean \| Array` | Typographic improvements to enable (in addition to those provided by markdown-it’s `typographer` option). Set this option to `true` to enable all improvements, or array containing individual improvement sets to include (choose from `fractions`, `guillemets` and `mathematical`). Default is `false`. |
+| Name                | Type               | Description                                                                                                                                                                                                                                                                                           |
+| ------------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `headingsStartWith` | `string`           | Heading size to use for the top-level heading (`xl` or `l`). Default is `l`.                                                                                                                                                                                                                          |
+| `calvert`           | `boolean \| Array` | Typographic improvements to enable (alongside those provided by markdown-it’s `typographer` option). Set this option to `true` to enable all improvements, or array containing individual improvement sets to include (choose from `fractions`, `guillemets` and `mathematical`). Default is `false`. |
 
 ### Heading sizes
 
@@ -110,7 +110,7 @@ Will output:
 
 ### Typographic improvements
 
-In addition to the typographic replacements provided by markdown-it’s `typographer` option, you can enable a number of other glyphs present in Margaret Calvert’s GDS Transport font using the `calvert` option.
+Alongside typographic replacements provided by markdown-it’s `typographer` option, you can enable other glyphs present in Margaret Calvert’s GDS Transport font by using the `calvert` option.
 
 For example:
 
