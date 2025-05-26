@@ -16,7 +16,11 @@ const testMarkdown = (path, options = {}) => {
   testGenerator(path, md)
 }
 
-testMarkdown('./test/fixtures/govuk.txt')
+testMarkdown('./test/fixtures/brand-govuk.txt')
+
+testMarkdown('./test/fixtures/brand-nhsuk.txt', {
+  brand: 'nhsuk'
+})
 
 testMarkdown('./test/fixtures/option-heading-starts-with.txt', {
   headingsStartWith: 'xl'
