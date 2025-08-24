@@ -3,8 +3,8 @@ export const brands = {
     headingPrefix: 'govuk-heading-',
     headingModifiers: ['xl', 'l', 'm', 's'],
     rules: {
-      blockquote_open: 'govuk-inset-text govuk-!-margin-left-0',
-      code_block: 'govuk-inset-text govuk-!-margin-left-0',
+      blockquote_open: 'app-blockquote',
+      code_block: 'app-code app-code--block',
       code_inline: 'app-code app-code--inline',
       paragraph_open: 'govuk-body',
       link_open: 'govuk-link',
@@ -23,8 +23,8 @@ export const brands = {
     headingPrefix: 'nhsuk-heading-',
     headingModifiers: ['xl', 'l', 'm', 's'],
     rules: {
-      blockquote_open: 'nhsuk-inset-text nhsuk-u-margin-left-0',
-      code_block: 'nhsuk-inset-text nhsuk-u-margin-left-0',
+      blockquote_open: 'app-blockquote',
+      code_block: 'app-code app-code--block',
       code_inline: 'app-code app-code--inline',
       paragraph_open: 'nhsuk-body',
       link_open: 'nhsuk-link',
