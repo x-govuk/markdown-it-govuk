@@ -41,3 +41,11 @@ testMarkdown('./test/fixtures/option-calvert-guillemets.txt', {
 testMarkdown('./test/fixtures/option-calvert-mathematical.txt', {
   calvert: ['mathematical']
 })
+
+testMarkdown('./test/fixtures/option-info-callout.txt', {
+  govspeak: ['information-callout']
+})
+
+testMarkdown('./test/fixtures/option-example-callout.txt', {
+  govspeak: ['example-callout', 'information-callout']
+})
