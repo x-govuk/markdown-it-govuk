@@ -1,4 +1,7 @@
+
 import { brands } from './src/brands.js'
+import { govspeakInformationCallout } from './src/govspeak/information-callout.js'
+import { govspeakExampleCallout } from './src/govspeak/example-callout.js'
 
 /**
  * Get default renderer for given markdown-it rule
@@ -41,8 +44,17 @@ const addClassesToRule = (md, rule, classes) => {
 const defaultOptions = {
   brand: 'govuk',
   headingsStartWith: 'l',
-  calvert: false
+  calvert: false,
+  govspeak: false
 }
+
+/**
+ * Map of available Govspeak extensions to their implementation functions
+ */
+const availableGovspeakExtensions = new Map([
+  ['example-callout', govspeakExampleCallout],
+  ['information-callout', govspeakInformationCallout]
+]);
 
 /**
  * Adds GOV.UK typography classes to blockquotes, headings, paragraphs, links,
@@ -55,6 +67,15 @@ const defaultOptions = {
 export default function (md, pluginOptions = {}) {
   // Merge options
   pluginOptions = { ...defaultOptions, ...pluginOptions }
+
+  const { govspeak } = pluginOptions;
+
+  for (const [option, implementation] of availableGovspeakExtensions) {
+    if (govspeak === true
+      || Array.isArray(govspeak) && govspeak.includes(option)) {
+      implementation(md);
+    }
+  }
 
   // Get brand config
   const brand = brands[pluginOptions.brand]

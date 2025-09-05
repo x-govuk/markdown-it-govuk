@@ -1,0 +1,62 @@
+---
+desc: Converts govspeak information callout (^ syntax) into GOV.UK Frontend-compliant HTML
+---
+
+.
+^ This is an inset text line
+.
+<div class="govuk-inset-text" aria-label="Information" role="note">
+<p class="govuk-body">This is an inset text line</p>
+</div>
+.
+
+.
+^ This is an inset text line
+.
+<div class="govuk-inset-text" aria-label="Information" role="note">
+<p class="govuk-body">This is an inset text line</p>
+</div>
+.
+
+.
+^ This is an inset text line ^
+.
+<div class="govuk-inset-text" aria-label="Information" role="note">
+<p class="govuk-body">This is an inset text line</p>
+</div>
+.
+
+.
+^ This is a multi-line inset text
+^ with a second line
+.
+<div class="govuk-inset-text" aria-label="Information" role="note">
+<p class="govuk-body">This is a multi-line inset text</p>
+</div>
+<div class="govuk-inset-text" aria-label="Information" role="note">
+<p class="govuk-body">with a second line</p>
+</div>
+.
+
+.
+Normal paragraph.
+
+^ Inset after paragraph
+.
+<p class="govuk-body">Normal paragraph.</p>
+<div class="govuk-inset-text" aria-label="Information" role="note">
+<p class="govuk-body">Inset after paragraph</p>
+</div>
+.
+
+.
+> Blockquote
+^ Inset after blockquote
+.
+<blockquote class="app-blockquote">
+<p class="govuk-body">Blockquote</p>
+</blockquote>
+<div class="govuk-inset-text" aria-label="Information" role="note">
+<p class="govuk-body">Inset after blockquote</p>
+</div>
+.
