@@ -6,7 +6,7 @@ desc: Converts govspeak example callout ($E text $E syntax) into GOV.UK Frontend
 $E This is an inset text line $E
 .
 <div class="govuk-inset-text">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
 </div>
 .
 
@@ -15,7 +15,7 @@ $E This is an inset text line
 $E
 .
 <div class="govuk-inset-text">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
 </div>
 .
 
@@ -25,7 +25,7 @@ This is an inset text line
 $E
 .
 <div class="govuk-inset-text">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
 </div>
 .
 
@@ -35,7 +35,7 @@ $E
 This is an inset text line $E
 .
 <div class="govuk-inset-text">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
 </div>
 .
 
@@ -45,7 +45,7 @@ This is an inset text line
 $E
 .
 <div class="govuk-inset-text">
-<p class="govuk-body"><strong>Example</strong>
+  <p class="govuk-body"><strong>Example</strong>
 This is an inset text line</p>
 </div>
 .
@@ -55,10 +55,10 @@ $E This is an inset text line $E
 $E with a second line $E
 .
 <div class="govuk-inset-text">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
 </div>
 <div class="govuk-inset-text">
-<p class="govuk-body">with a second line</p>
+  <p class="govuk-body">with a second line</p>
 </div>
 .
 
@@ -69,7 +69,7 @@ $E Inset after paragraph $E
 .
 <p class="govuk-body">Normal paragraph.</p>
 <div class="govuk-inset-text">
-<p class="govuk-body">Inset after paragraph</p>
+  <p class="govuk-body">Inset after paragraph</p>
 </div>
 .
 
@@ -81,7 +81,7 @@ $E Inset after blockquote $E
 <p class="govuk-body">Blockquote</p>
 </blockquote>
 <div class="govuk-inset-text">
-<p class="govuk-body">Inset after blockquote</p>
+  <p class="govuk-body">Inset after blockquote</p>
 </div>
 .
 
@@ -92,9 +92,9 @@ This is an inset text line
 $E
 .
 <div class="govuk-inset-text">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
 <div class="govuk-inset-text" aria-label="Information" role="note">
-<p class="govuk-body">nested information callout</p>
+  <p class="govuk-body">nested information callout</p>
 </div>
 </div>
 .

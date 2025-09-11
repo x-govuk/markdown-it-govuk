@@ -6,7 +6,24 @@ desc: Converts govspeak information callout (^ syntax) into GOV.UK Frontend-comp
 ^ This is an inset text line
 .
 <div class="govuk-inset-text" aria-label="Information" role="note">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
+</div>
+.
+
+.
+^ This is an inset text **line**
+.
+<div class="govuk-inset-text" aria-label="Information" role="note">
+  <p class="govuk-body">This is an inset text <strong>line</strong></p>
+</div>
+.
+
+.
+
+^ This is an inset text *line*
+.
+<div class="govuk-inset-text" aria-label="Information" role="note">
+  <p class="govuk-body">This is an inset text <em>line</em></p>
 </div>
 .
 
@@ -14,7 +31,7 @@ desc: Converts govspeak information callout (^ syntax) into GOV.UK Frontend-comp
 ^ This is an inset text line
 .
 <div class="govuk-inset-text" aria-label="Information" role="note">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
 </div>
 .
 
@@ -22,7 +39,7 @@ desc: Converts govspeak information callout (^ syntax) into GOV.UK Frontend-comp
 ^ This is an inset text line ^
 .
 <div class="govuk-inset-text" aria-label="Information" role="note">
-<p class="govuk-body">This is an inset text line</p>
+  <p class="govuk-body">This is an inset text line</p>
 </div>
 .
 
@@ -31,10 +48,10 @@ desc: Converts govspeak information callout (^ syntax) into GOV.UK Frontend-comp
 ^ with a second line
 .
 <div class="govuk-inset-text" aria-label="Information" role="note">
-<p class="govuk-body">This is a multi-line inset text</p>
+  <p class="govuk-body">This is a multi-line inset text</p>
 </div>
 <div class="govuk-inset-text" aria-label="Information" role="note">
-<p class="govuk-body">with a second line</p>
+  <p class="govuk-body">with a second line</p>
 </div>
 .
 
@@ -45,7 +62,7 @@ Normal paragraph.
 .
 <p class="govuk-body">Normal paragraph.</p>
 <div class="govuk-inset-text" aria-label="Information" role="note">
-<p class="govuk-body">Inset after paragraph</p>
+  <p class="govuk-body">Inset after paragraph</p>
 </div>
 .
 
@@ -57,6 +74,6 @@ Normal paragraph.
 <p class="govuk-body">Blockquote</p>
 </blockquote>
 <div class="govuk-inset-text" aria-label="Information" role="note">
-<p class="govuk-body">Inset after blockquote</p>
+  <p class="govuk-body">Inset after blockquote</p>
 </div>
 .

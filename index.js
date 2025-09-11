@@ -1,7 +1,7 @@
 
 import { brands } from './src/brands.js'
-import { govspeakInformationCallout } from './src/govspeak/information-callout.js'
 import { govspeakExampleCallout } from './src/govspeak/example-callout.js'
+import { govspeakInformationCallout } from './src/govspeak/information-callout.js'
 
 /**
  * Get default renderer for given markdown-it rule
