@@ -47,5 +47,9 @@ testMarkdown('./test/fixtures/option-info-callout.txt', {
 })
 
 testMarkdown('./test/fixtures/option-example-callout.txt', {
-  govspeak: ['example-callout', 'information-callout']
+  govspeak: ['example-callout', 'information-callout', 'warning-callout']
+})
+
+testMarkdown('./test/fixtures/option-warning-callout.txt', {
+  govspeak: ['warning-callout', 'information-callout']
 })

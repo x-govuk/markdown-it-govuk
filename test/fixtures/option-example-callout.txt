@@ -98,3 +98,21 @@ $E
 </div>
 </div>
 .
+
+.
+$E
+oh my
+% this is a warning callout %
+$E
+.
+<div class="govuk-inset-text">
+  <p class="govuk-body">oh my</p>
+<div class="govuk-warning-text" aria-label="Warning" role="note">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+    this is a warning callout
+  </strong>
+</div>
+</div>
+.
