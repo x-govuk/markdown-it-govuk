@@ -2,6 +2,7 @@
 import { brands } from './src/brands.js'
 import { govspeakExampleCallout } from './src/govspeak/example-callout.js'
 import { govspeakInformationCallout } from './src/govspeak/information-callout.js'
+import { govspeakWarningCallout } from './src/govspeak/warning-callout.js'
 
 /**
  * Get default renderer for given markdown-it rule
@@ -53,7 +54,8 @@ const defaultOptions = {
  */
 const availableGovspeakExtensions = new Map([
   ['example-callout', govspeakExampleCallout],
-  ['information-callout', govspeakInformationCallout]
+  ['information-callout', govspeakInformationCallout],
+  ['warning-callout', govspeakWarningCallout]
 ]);
 
 /**

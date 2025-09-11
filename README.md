@@ -86,7 +86,7 @@ These styles rely on `govuk-frontend`, so make sure you have this installed as a
 | `headingsStartWith` | `string`           | Heading size to use for the top-level heading (`xl` or `l`). Default is `l`.                                                                                                                                                                                                                          |
 | `brand`             | `string`           | Use either `'govuk'` or `'nhsuk'` namespaced class names. Default is `'govuk'`.                                                                                                                                                                                                                       |
 | `calvert`           | `boolean \| Array` | Typographic improvements to enable (alongside those provided by markdown-it’s `typographer` option). Set this option to `true` to enable all improvements, or array containing individual improvement sets to include (choose from `fractions`, `guillemets` and `mathematical`). Default is `false`. |
-| `govspeak`          | `boolean \| Array` | Enable support for Govspeak extensions. Set this option to `true` to enable all supported extensions, or provide an array containing individual extensions to include (choose from `example-callout` and `information-callout`). Default is `false`.                                                  |
+| `govspeak`          | `boolean \| Array` | Enable support for Govspeak extensions. Set this option to `true` to enable all supported extensions, or provide an array containing individual extensions to include (choose from `example-callout`, `information-callout` and `warning-callout`). Default is `false`.                               |
 
 ### Heading sizes
 
@@ -143,6 +143,7 @@ The following extensions are currently supported:
 
 - `example-callout`
 - `information-callout`
+- `warning-callout`
 
 You can enable support for all extensions by setting the option to `true`, or you can enable support for individual extensions by providing an array containing the names of the extensions you want to use.
 
@@ -201,6 +202,33 @@ Will output:
 ```html
 <div class="govuk-inset-text" aria-label="Information" role="note">
   <p class="govuk-body">Some text with an information callout</p>
+</div>
+```
+
+#### Warning callout
+
+For example:
+
+```js
+import markdownit from 'markdown-it'
+import markdownitGovuk from 'markdown-it-govuk'
+
+const md = markdownit.use(markdownitGovuk, {
+  govspeak: ['warning-callout']
+})
+
+md.render('% Some text with a warning callout %')
+```
+
+Will output:
+
+```html
+<div class="govuk-warning-text" aria-label="Warning" role="note">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+    Some text with a warning callout
+  </strong>
 </div>
 ```
 
