@@ -86,7 +86,7 @@ These styles rely on `govuk-frontend`, so make sure you have this installed as a
 | `headingsStartWith` | `string`           | Heading size to use for the top-level heading (`xl` or `l`). Default is `l`.                                                                                                                                                                                                                          |
 | `brand`             | `string`           | Use either `'govuk'` or `'nhsuk'` namespaced class names. Default is `'govuk'`.                                                                                                                                                                                                                       |
 | `calvert`           | `boolean \| Array` | Typographic improvements to enable (alongside those provided by markdown-it’s `typographer` option). Set this option to `true` to enable all improvements, or array containing individual improvement sets to include (choose from `fractions`, `guillemets` and `mathematical`). Default is `false`. |
-| `govspeak`   | `boolean \| Array` | Enable support for Govspeak extensions. Set this option to `true` to enable all supported extensions, or array containing individual extensions to include (choose from `example-callout`, `information-callout` and `warning-callout`). Default is `false`.                                                        |
+| `govspeak`   | `boolean \| Array` | Enable support for Govspeak extensions / style. Set this option to `true` to enable all supported extensions, or array containing individual extensions to include (choose from `blockquote`, `example-callout`, `information-callout` and `warning-callout`). Default is `false`.                                                        |
 
 ### Heading sizes
 
@@ -141,6 +141,7 @@ You can enable support for some [Govspeak](https://govspeak-preview.publishing.s
 
 The following extensions are currently supported:
 
+- `blockquote`
 - `example-callout`
 - `information-callout`
 - `warning-callout`
@@ -154,6 +155,29 @@ import markdownitGovuk fromgit 'markdown-it-govuk'
 const md = markdownit.use(markdownitGovuk, {
   govspeak: true
 })
+```
+
+#### Blockquote
+
+For example:
+
+```js
+import markdownit from 'markdown-it'
+import markdownitGovuk from 'markdown-it-govuk'
+
+const md = markdownit.use(markdownitGovuk, {
+  govspeak: ['blockquote']
+})
+
+md.render(`> Some text with a blockquote`)
+```
+
+Will output:
+
+```html
+<blockquote class="app-blockquote">
+  <p class="govuk-body">Some text with a blockquote</p>
+</blockquote>
 ```
 
 #### Example callout

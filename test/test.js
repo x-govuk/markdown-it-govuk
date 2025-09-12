@@ -42,14 +42,23 @@ testMarkdown('./test/fixtures/option-calvert-mathematical.txt', {
   calvert: ['mathematical']
 })
 
-testMarkdown('./test/fixtures/option-info-callout.txt', {
+testMarkdown('./test/fixtures/option-govspeak-info-callout.txt', {
   govspeak: ['information-callout']
 })
 
-testMarkdown('./test/fixtures/option-example-callout.txt', {
+testMarkdown('./test/fixtures/option-govspeak-example-callout.txt', {
   govspeak: ['example-callout', 'information-callout', 'warning-callout']
 })
 
-testMarkdown('./test/fixtures/option-warning-callout.txt', {
+testMarkdown('./test/fixtures/option-govspeak-warning-callout.txt', {
   govspeak: ['warning-callout', 'information-callout']
+})
+
+testMarkdown('./test/fixtures/option-govspeak-blockquote-govuk.txt', {
+  govspeak: ['blockquote']
+})
+
+testMarkdown('./test/fixtures/option-govspeak-blockquote-nhsuk.txt', {
+  brand: 'nhsuk',
+  govspeak: ['blockquote']
 })
