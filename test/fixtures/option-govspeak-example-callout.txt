@@ -77,7 +77,7 @@ $E Inset after paragraph $E
 > Blockquote
 $E Inset after blockquote $E
 .
-<blockquote class="app-blockquote">
+<blockquote class="govuk-inset-text govuk-!-margin-left-0">
 <p class="govuk-body">Blockquote</p>
 </blockquote>
 <div class="govuk-inset-text">

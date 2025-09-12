@@ -1,0 +1,11 @@
+---
+desc: Styles nhsuk blockquote in govspeak style
+---
+
+.
+> Block quote
+.
+<blockquote class="app-blockquote">
+<p class="nhsuk-body">Block quote</p>
+</blockquote>
+.

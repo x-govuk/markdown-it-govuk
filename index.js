@@ -1,8 +1,6 @@
 
 import { brands } from './src/brands.js'
-import { govspeakExampleCallout } from './src/govspeak/example-callout.js'
-import { govspeakInformationCallout } from './src/govspeak/information-callout.js'
-import { govspeakWarningCallout } from './src/govspeak/warning-callout.js'
+import { getGovspeakOptions, availableGovspeakExtensions } from './src/govspeak/index.js'
 
 /**
  * Get default renderer for given markdown-it rule
@@ -50,15 +48,6 @@ const defaultOptions = {
 }
 
 /**
- * Map of available Govspeak extensions to their implementation functions
- */
-const availableGovspeakExtensions = new Map([
-  ['example-callout', govspeakExampleCallout],
-  ['information-callout', govspeakInformationCallout],
-  ['warning-callout', govspeakWarningCallout]
-]);
-
-/**
  * Adds GOV.UK typography classes to blockquotes, headings, paragraphs, links,
  * lists, section breaks and tables and updates references to local files in
  * links and images to friendly URLs
@@ -70,17 +59,23 @@ export default function (md, pluginOptions = {}) {
   // Merge options
   pluginOptions = { ...defaultOptions, ...pluginOptions }
 
-  const { govspeak } = pluginOptions;
+  pluginOptions.govspeak = getGovspeakOptions(pluginOptions.govspeak)
 
-  for (const [option, implementation] of availableGovspeakExtensions) {
-    if (govspeak === true
-      || Array.isArray(govspeak) && govspeak.includes(option)) {
-      implementation(md);
-    }
-  }
+  const { govspeak } = pluginOptions;
 
   // Get brand config
   const brand = brands[pluginOptions.brand]
+
+  for (const key of govspeak) {
+    if (availableGovspeakExtensions.has(key)) {
+      const implementation = availableGovspeakExtensions.get(key)
+      implementation(md)
+    }
+
+    if (key === 'blockquote') {
+      brand.rules.blockquote_open = 'app-blockquote'
+    }
+  }
 
   // Headings
   const headingRenderer = getDefaultRenderer(md, 'heading_open')

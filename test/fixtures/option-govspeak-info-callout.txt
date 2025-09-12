@@ -70,7 +70,7 @@ Normal paragraph.
 > Blockquote
 ^ Inset after blockquote
 .
-<blockquote class="app-blockquote">
+<blockquote class="govuk-inset-text govuk-!-margin-left-0">
 <p class="govuk-body">Blockquote</p>
 </blockquote>
 <div class="govuk-inset-text" aria-label="Information" role="note">
