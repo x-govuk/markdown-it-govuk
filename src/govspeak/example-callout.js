@@ -1,20 +1,23 @@
 import { createGovspeakBlockParser } from './govspeak-utils.js'
 
+/**
+ * @import MarkdownIt from "markdown-it"
+ */
+
 const marker = '$E'
 const tokenType = 'govspeak_example_callout'
-const options = {
-  marker,
-  tokenType,
-  tokenAttrs: { class: 'govuk-inset-text' }
+const tokenAttrs = {
+  'data-govspeak': 'example-callout',
 }
 
 const { parseMultiLine, emitMultiLine, parseSingleLine }
-  = createGovspeakBlockParser(options)
+  = createGovspeakBlockParser(marker, tokenType, tokenAttrs)
 
-function renderExampleCalloutOpen(tokens, idx, options, env, self) {
-  return `<div${self.renderAttrs(tokens[idx])}>\n  `
-}
-
+/**
+ * Parses a Govspeak example callout block.
+ *
+ * @type {MarkdownIt.ParserBlock.RuleBlock}
+ */
 function parseExampleCallout(state, startLine, endLine, silent) {
   const pos = state.bMarks[startLine] + state.tShift[startLine]
   const max = state.eMarks[startLine]
@@ -58,6 +61,9 @@ function parseExampleCallout(state, startLine, endLine, silent) {
  *                            $E
  *                            Some content $E
  *      (optional blank lines before the closing content line)
+ * 
+ * @param {MarkdownIt} md - markdown-it instance
+ * @returns {void}
  */
 export function govspeakExampleCallout(md) {
   md.block.ruler.before(
@@ -65,7 +71,5 @@ export function govspeakExampleCallout(md) {
     tokenType,
     parseExampleCallout,
     { alt: ['paragraph', 'reference', 'blockquote', 'list'] }
-  );
-
-  md.renderer.rules[tokenType + '_open'] = renderExampleCalloutOpen
+  )
 }

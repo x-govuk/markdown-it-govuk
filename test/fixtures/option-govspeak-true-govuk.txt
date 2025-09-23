@@ -1,0 +1,32 @@
+---
+desc: govspeak option true with govuk brand
+---
+
+.
+> This is a quote
+
+^This is useful information that's worth knowing.^
+
+%You will be fined or put in prison if you don't do this thing.%
+
+$A
+HM Revenue and Customs
+Bradford
+BD98 1YY
+$A
+.
+<blockquote data-govspeak="blockquote">
+<p class="govuk-body">This is a quote</p>
+</blockquote>
+<div data-govspeak="information-callout" aria-label="Information" role="note">
+<p class="govuk-body">This is useful information that's worth knowing.</p>
+</div>
+<div data-govspeak="warning-callout" aria-label="Warning" role="note">
+<p class="govuk-body">You will be fined or put in prison if you don't do this thing.</p>
+</div>
+<div data-govspeak="address">
+<p class="govuk-body">HM Revenue and Customs<br>
+Bradford<br>
+BD98 1YY</p>
+</div>
+.

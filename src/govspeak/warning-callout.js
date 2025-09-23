@@ -1,35 +1,29 @@
 import { createGovspeakBlockParser } from './govspeak-utils.js'
 import { escapeHtml } from 'markdown-it/lib/common/utils.mjs'
 
-const tokenType = 'govspeak_warning_callout'
+/**
+ * @import MarkdownIt from "markdown-it"
+ */
 
-const options = {
-  marker: '%',
-  tokenType,
-  tokenAttrs: {
-    class: 'govuk-warning-text',
-    'aria-label': 'Warning',
-    role: 'note'
-  }
+const marker = '%'
+const tokenType = 'govspeak_warning_callout'
+const tokenAttrs = {
+  'data-govspeak': 'warning-callout',
+  'aria-label': 'Warning',
+  role: 'note'
 }
 
 const {
-  emitSingleLine,
+  emitMultiLine,
   parseSingleLine
-} = createGovspeakBlockParser(options)
+} = createGovspeakBlockParser(marker, tokenType, tokenAttrs)
 
-function renderWarningCalloutOpen(tokens, idx, options, env, self) {
-  const { content } = tokens[idx];
-
-  return `<div${self.renderAttrs(tokens[idx])}>
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-visually-hidden">Warning</span>
-    ${escapeHtml(content)}
-  </strong>\n`
-}
-
-function parseWarningCallout(state, startLine, endLine, silent) {
+/**
+ * Govspeak-style warning callout parser.
+ *
+ * @type {MarkdownIt.ParserBlock.RuleBlock}
+ */
+function parseWarningCallout(state, startLine, _endLine, silent) {
   const pos = state.bMarks[startLine] + state.tShift[startLine]
   const max = state.eMarks[startLine]
   const rawLine = state.src.slice(pos, max)
@@ -44,12 +38,15 @@ function parseWarningCallout(state, startLine, endLine, silent) {
 
   if (silent) { return true }
 
-  emitSingleLine(state, startLine, content)
+  emitMultiLine(state, startLine, startLine, escapeHtml(content))
   return true
 }
 
 /**
  * Govspeak-style warning callout.
+ * 
+ * @param {MarkdownIt} md - markdown-it instance
+ * @returns {void}
  */
 export function govspeakWarningCallout(md) {
   md.block.ruler.before(
@@ -57,7 +54,6 @@ export function govspeakWarningCallout(md) {
     tokenType,
     parseWarningCallout,
     { alt: ['paragraph', 'reference', 'blockquote', 'list'] }
-  );
+  )
+}
 
-  md.renderer.rules[tokenType + '_open'] = renderWarningCalloutOpen
-};

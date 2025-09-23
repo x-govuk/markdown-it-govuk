@@ -42,6 +42,24 @@ testMarkdown('./test/fixtures/option-calvert-mathematical.txt', {
   calvert: ['mathematical']
 })
 
+testMarkdown('./test/fixtures/option-govspeak-false-govuk.txt', {
+  govspeak: false
+})
+
+testMarkdown('./test/fixtures/option-govspeak-true-govuk.txt', {
+  govspeak: true
+})
+
+testMarkdown('./test/fixtures/option-govspeak-false-nhsuk.txt', {
+  brand: 'nhsuk',
+  govspeak: false
+})
+
+testMarkdown('./test/fixtures/option-govspeak-true-nhsuk.txt', {
+  brand: 'nhsuk',
+  govspeak: true
+})
+
 testMarkdown('./test/fixtures/option-govspeak-info-callout.txt', {
   govspeak: ['information-callout']
 })
@@ -61,4 +79,13 @@ testMarkdown('./test/fixtures/option-govspeak-blockquote-govuk.txt', {
 testMarkdown('./test/fixtures/option-govspeak-blockquote-nhsuk.txt', {
   brand: 'nhsuk',
   govspeak: ['blockquote']
+})
+
+testMarkdown('./test/fixtures/option-govspeak-address-govuk.txt', {
+  govspeak: ['address']
+})
+
+testMarkdown('./test/fixtures/option-govspeak-address-nhsuk.txt', {
+  brand: 'nhsuk',
+  govspeak: ['address']
 })

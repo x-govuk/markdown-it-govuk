@@ -1,0 +1,17 @@
+---
+desc: Converts govspeak address ($A text $A syntax) into GOV.UK Frontend-compliant HTML for nhs brand
+---
+
+.
+$A
+HM Revenue and Customs
+Bradford
+BD98 1YY
+$A
+.
+<div data-govspeak="address">
+<p class="nhsuk-body">HM Revenue and Customs<br>
+Bradford<br>
+BD98 1YY</p>
+</div>
+.
