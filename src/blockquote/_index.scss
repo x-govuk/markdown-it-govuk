@@ -1,6 +1,6 @@
 @use "govuk-frontend/dist/govuk" as *;
 
-.app-blockquote {
+blockquote[data-govspeak="blockquote"] {
   margin: 0 0 govuk-spacing(4);
   padding: 0 0 0 govuk-spacing(6);
 

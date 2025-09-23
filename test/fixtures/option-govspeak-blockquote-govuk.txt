@@ -5,7 +5,7 @@ desc: Styles govuk blockquote in govspeak style
 .
 > Block quote
 .
-<blockquote class="app-blockquote">
+<blockquote data-govspeak="blockquote">
 <p class="govuk-body">Block quote</p>
 </blockquote>
 .

@@ -5,12 +5,8 @@ desc: Converts govspeak warning callout (% syntax) into GOV.UK Frontend-complian
 .
 % this is a warning callout %
 .
-<div class="govuk-warning-text" aria-label="Warning" role="note">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-visually-hidden">Warning</span>
-    this is a warning callout
-  </strong>
+<div data-govspeak="warning-callout" aria-label="Warning" role="note">
+<p class="govuk-body">this is a warning callout</p>
 </div>
 .
 
@@ -18,26 +14,18 @@ desc: Converts govspeak warning callout (% syntax) into GOV.UK Frontend-complian
 ^ this is an information callout ^
 % this is a warning callout %
 .
-<div class="govuk-inset-text" aria-label="Information" role="note">
-  <p class="govuk-body">this is an information callout</p>
+<div data-govspeak="information-callout" aria-label="Information" role="note">
+<p class="govuk-body">this is an information callout</p>
 </div>
-<div class="govuk-warning-text" aria-label="Warning" role="note">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-visually-hidden">Warning</span>
-    this is a warning callout
-  </strong>
+<div data-govspeak="warning-callout" aria-label="Warning" role="note">
+<p class="govuk-body">this is a warning callout</p>
 </div>
 .
 
 .
 % this is a warning callout <div>test</div> %
 .
-<div class="govuk-warning-text" aria-label="Warning" role="note">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-visually-hidden">Warning</span>
-    this is a warning callout &lt;div&gt;test&lt;/div&gt;
-  </strong>
+<div data-govspeak="warning-callout" aria-label="Warning" role="note">
+<p class="govuk-body">this is a warning callout &lt;div&gt;test&lt;/div&gt;</p>
 </div>
 .

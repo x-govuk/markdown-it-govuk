@@ -1,44 +1,7 @@
 
 import { brands } from './src/brands.js'
-import { getGovspeakOptions, availableGovspeakExtensions } from './src/govspeak/index.js'
-
-/**
- * Get default renderer for given markdown-it rule
- *
- * @param {import('markdown-it')} md - markdown-it instance
- * @param {string} rule - Rule to modify
- * @returns {Function} - Renderer for the given rule
- */
-const getDefaultRenderer = (md, rule) => {
-  return (
-    md.renderer.rules[rule] ||
-    function (tokens, idx, options, env, self) {
-      return self.renderToken(tokens, idx, options)
-    }
-  )
-}
-
-/**
- * Add classes to a token’s class attribute in given markdown-it rule
- *
- * @param {import('markdown-it')} md - markdown-it instance
- * @param {string} rule - Rule to modify
- * @param {string} classes - Classes to add to the rule’s token
- */
-const addClassesToRule = (md, rule, classes) => {
-  const defaultRenderer = getDefaultRenderer(md, rule)
-  md.renderer.rules[rule] = (tokens, idx, options, env, self) => {
-    const token = tokens[idx]
-
-    if (token.attrGet('class')) {
-      token.attrJoin('class', classes)
-    } else {
-      token.attrPush(['class', classes])
-    }
-
-    return defaultRenderer(tokens, idx, options, env, self)
-  }
-}
+import { getGovspeakOptions, configureGovspeak } from './src/govspeak/index.js'
+import { getDefaultRenderer, addClassesToRule } from './src/utils.js'
 
 const defaultOptions = {
   brand: 'govuk',
@@ -61,21 +24,12 @@ export default function (md, pluginOptions = {}) {
 
   pluginOptions.govspeak = getGovspeakOptions(pluginOptions.govspeak)
 
-  const { govspeak } = pluginOptions;
+  const { govspeak } = pluginOptions
 
-  // Get brand config
-  const brand = brands[pluginOptions.brand]
+  // Get brand config (clone to avoid mutating original)
+  const brand = structuredClone(brands[pluginOptions.brand])
 
-  for (const key of govspeak) {
-    if (availableGovspeakExtensions.has(key)) {
-      const implementation = availableGovspeakExtensions.get(key)
-      implementation(md)
-    }
-
-    if (key === 'blockquote') {
-      brand.rules.blockquote_open = 'app-blockquote'
-    }
-  }
+  configureGovspeak(md, govspeak, brand)
 
   // Headings
   const headingRenderer = getDefaultRenderer(md, 'heading_open')
