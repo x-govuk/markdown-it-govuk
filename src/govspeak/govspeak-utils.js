@@ -1,28 +1,40 @@
 /**
+ * @import MarkdownIt from "markdown-it"
+ */
+
+/**
  * Creates a set of parser utility functions for a specific Govspeak block extension.
  * This factory uses a closure to hold the configuration, making the returned
  * functions more efficient and easier to use.
  *
- * @param {object} config - The configuration for the block parser.
- * @param {string} config.marker - The character(s) that define the block boundaries.
- * @param {string} config.tokenType - The base name for the generated tokens.
- * @param {object} config.tokenAttrs - The HTML attributes to add to the block's container.
- * @returns {object} An object containing the specialised parser functions.
+ * @param {string} marker - The character(s) that define the block boundaries.
+ * @param {string} tokenType - The base name for the generated tokens.
+ * @param {Object.<string, string>} [tokenAttrs={}] - The HTML attributes to add to the block's container.
+ * @returns {UtilFunctions} An object containing the specialised parser functions.
  */
-export function createGovspeakBlockParser({ marker, tokenType, tokenAttrs }) {
+export function createGovspeakBlockParser(marker, tokenType, tokenAttrs = {}) {
   const escMarker = marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const INLINE_CLOSING_RE = new RegExp(`^(.*\\S)\\s+${escMarker}\\s*$`)
 
   /**
+   * @typedef {Object} UtilFunctions - The set of utility functions returned by createGovspeakBlockParser.
+   * @property {typeof parseMultiLine} parseMultiLine - A parser for multi-line blocks.
+   * @property {typeof emitMultiLine} emitMultiLine - A function to emit tokens for multi-line blocks.
+   * @property {typeof emitSingleLine} emitSingleLine - A function to emit tokens for single-line blocks.
+   * @property {typeof parseSingleLine} parseSingleLine - A parser for single-line blocks.
+   */
+
+  /**
    * A reusable parser for single-line Govspeak blocks.
    * e.g. `^ content ^` or `$E content $E`
+   * 
    * @param {string} trimmedLine - The line content to parse.
    * @param {boolean} requireClosingMarker - Whether the closing marker is mandatory.
    * @returns {string|null} The extracted content, or null if it doesn't match.
    */
   function parseSingleLine(trimmedLine, requireClosingMarker = true) {
-    const closing = requireClosingMarker ? `\\s+${escMarker}` : `(?:\\s+${escMarker})?`
-    const singleLineRe = new RegExp(`^${escMarker}\\s+([\\s\\S]*?)${closing}$`)
+    const closing = requireClosingMarker ? `\\s+${escMarker}` : `(?:\\s*${escMarker})?`
+    const singleLineRe = new RegExp(`^${escMarker}\\s*([\\s\\S]*?)${closing}$`)
     const match = trimmedLine.match(singleLineRe)
     return match ? match[1].trim() : null
   }
@@ -30,11 +42,8 @@ export function createGovspeakBlockParser({ marker, tokenType, tokenAttrs }) {
   /**
    * A reusable parser for multi-line Govspeak blocks.
    * e.g. `$E\n  content\n$E`
-   * @param {*} state
-   * @param {*} startLine
-   * @param {*} endLine
-   * @param {boolean} silent - If true, the parser will only check for a match without emitting tokens.
-   * @returns {boolean} True if a block was successfully parsed.
+   * 
+   * @type {MarkdownIt.ParserBlock.RuleBlock}
    */
   function parseMultiLine(state, startLine, endLine, silent) {
     const pos = state.bMarks[startLine] + state.tShift[startLine]
@@ -43,7 +52,7 @@ export function createGovspeakBlockParser({ marker, tokenType, tokenAttrs }) {
     const rawLine = state.src.slice(pos, max)
     const trimmedLine = rawLine.trimEnd()
 
-    let firstContent = "";
+    let firstContent = ""
 
     if (trimmedLine !== marker) {
       // Extract remainder after marker (could be content or spaces)
@@ -105,13 +114,21 @@ export function createGovspeakBlockParser({ marker, tokenType, tokenAttrs }) {
     return true
   }
 
+  /**
+   * Emits tokens for a multi-line Govspeak block.
+   * 
+   * @param {MarkdownIt.StateBlock} state
+   * @param {number} startLine - The line where the block starts.
+   * @param {number} closingLineIdx - The line where the block ends (inclusive).
+   * @param {string} innerSrc - The inner content of the block.
+   * @returns {void}
+   */
   function emitMultiLine(state, startLine, closingLineIdx, innerSrc) {
     const open = state.push(`${tokenType}_open`, 'div', 1)
     open.block = true
     open.map = [startLine, closingLineIdx + 1]
-    for (const [attr, value] of Object.entries(tokenAttrs)) {
-      open.attrSet(attr, value)
-    }
+
+    addAttributeToRule(open, tokenAttrs)
 
     const innerTokens = []
     state.md.block.parse(innerSrc, state.md, state.env, innerTokens)
@@ -125,14 +142,21 @@ export function createGovspeakBlockParser({ marker, tokenType, tokenAttrs }) {
     state.line = closingLineIdx + 1
   }
 
+  /**
+   * Emits tokens for a single-line Govspeak block.
+   *
+   * @param {MarkdownIt.StateBlock} state
+   * @param {number} startLine - The line where the block starts.
+   * @param {string} content - The content of the block.
+   * @returns {void}
+   */
   function emitSingleLine(state, startLine, content) {
     const open = state.push(`${tokenType}_open`, 'div', 1)
     open.block = true
     open.content = content
     open.map = [startLine, startLine + 1]
-    for (const [attr, value] of Object.entries(tokenAttrs)) {
-      open.attrSet(attr, value)
-    }
+
+    addAttributeToRule(open, tokenAttrs)
 
     state.push(`${tokenType}_close`, 'div', -1)
 
@@ -144,5 +168,21 @@ export function createGovspeakBlockParser({ marker, tokenType, tokenAttrs }) {
     emitMultiLine,
     emitSingleLine,
     parseSingleLine
+  }
+}
+
+/**
+ * Adds attributes to a token.
+ *
+ * @param {MarkdownIt.Token} token - The token to modify.
+ * @param {Object.<string, string>} tokenAttrs - The attributes to add.
+ */
+export function addAttributeToRule(token, tokenAttrs) {
+  for (const [attr, value] of Object.entries(tokenAttrs)) {
+    if (token.attrGet(attr)) {
+      token.attrJoin(attr, value)
+    } else {
+      token.attrPush([attr, value])
+    }
   }
 }
