@@ -1,3 +1,5 @@
+import { addAttributeToRule } from '../utils.js'
+
 /**
  * @import MarkdownIt from 'markdown-it'
  */
@@ -177,25 +179,9 @@ export function createGovspeakBlockParser(marker, tokenType, tokenAttrs = {}) {
   }
 
   return {
-    parseMultiLine,
     emitMultiLine,
     emitSingleLine,
+    parseMultiLine,
     parseSingleLine
-  }
-}
-
-/**
- * Add attributes to a token
- *
- * @param {MarkdownIt.Token} token - Token to modify
- * @param {Object.<string, string>} tokenAttrs - Attributes to add
- */
-export function addAttributeToRule(token, tokenAttrs) {
-  for (const [attr, value] of Object.entries(tokenAttrs)) {
-    if (token.attrGet(attr)) {
-      token.attrJoin(attr, value)
-    } else {
-      token.attrPush([attr, value])
-    }
   }
 }

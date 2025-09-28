@@ -1,6 +1,6 @@
 import { escapeHtml } from 'markdown-it/lib/common/utils.mjs'
 
-import { createGovspeakBlockParser } from '../govspeak-utils.js'
+import { createGovspeakBlockParser } from '../parser.js'
 
 /**
  * @import MarkdownIt from 'markdown-it'
