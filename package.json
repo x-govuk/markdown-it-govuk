@@ -61,7 +61,7 @@
       "sass": "./src/_index.scss"
     },
     "./highlight": {
-      "import": "./src/highlight.js"
+      "import": "./src/highlight/index.js"
     }
   }
 }
