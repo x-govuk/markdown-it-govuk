@@ -29,7 +29,7 @@ desc: Converts Markdown into GOV.UK Frontend-compliant HTML
 .
 > Block quote
 .
-<blockquote class="app-blockquote">
+<blockquote class="govuk-inset-text govuk-!-margin-left-0">
 <p class="govuk-body">Block quote</p>
 </blockquote>
 .

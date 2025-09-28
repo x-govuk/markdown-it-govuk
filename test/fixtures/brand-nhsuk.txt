@@ -29,7 +29,7 @@ desc: Converts Markdown into NHS.UK Frontend-compliant HTML
 .
 > Block quote
 .
-<blockquote class="app-blockquote">
+<blockquote class="nhsuk-inset-text nhsuk-u-margin-left-0">
 <p class="nhsuk-body">Block quote</p>
 </blockquote>
 .
