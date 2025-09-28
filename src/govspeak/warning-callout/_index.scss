@@ -1,0 +1,33 @@
+@use "govuk-frontend/dist/govuk" as *;
+
+// Govspeak warning callout
+// https://components.publishing.service.gov.uk/component-guide/govspeak/warning_callout
+// https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/components/govspeak/_warning-callout.scss
+[data-govspeak="warning-callout"] {
+  $_icon-size: 35px;
+  $_icon-spacing: 10px;
+
+  margin: 0 0 govuk-spacing(6);
+  padding: govuk-spacing(3) 0 0 calc($_icon-size + $_icon-spacing);
+  position: relative;
+
+  &::before {
+    content: "!";
+    @include govuk-typography-weight-bold($important: false);
+    // stylelint-disable-next-line scss/at-extend-no-missing-placeholder
+    @extend .govuk-warning-text__icon;
+  }
+
+  p {
+    @include govuk-font($size: 19, $weight: bold);
+  }
+
+  @include govuk-media-query($media-type: print) {
+    margin: govuk-spacing(3) 0;
+
+    &::before {
+      background-color: govuk-colour("white");
+      color: $govuk-print-text-colour;
+    }
+  }
+}

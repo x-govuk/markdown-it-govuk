@@ -1,8 +1,8 @@
-import { govspeakAddress } from './address.js'
-import { govspeakBlockquote } from './blockquote.js'
-import { govspeakExampleCallout } from './example-callout.js'
-import { govspeakInformationCallout } from './information-callout.js'
-import { govspeakWarningCallout } from './warning-callout.js'
+import { govspeakAddress } from './address/index.js'
+import { govspeakBlockquote } from './blockquote/index.js'
+import { govspeakExampleCallout } from './example-callout/index.js'
+import { govspeakInformationCallout } from './information-callout/index.js'
+import { govspeakWarningCallout } from './warning-callout/index.js'
 
 /**
  * @import MarkdownIt from 'markdown-it'

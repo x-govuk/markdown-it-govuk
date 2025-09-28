@@ -1,0 +1,10 @@
+@use "govuk-frontend/dist/govuk" as *;
+
+// Govspeak address
+// https://components.publishing.service.gov.uk/component-guide/govspeak/address
+// https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/components/govspeak/_contact.scss
+[data-govspeak="address"] {
+  border-left: 1px solid govuk-colour("mid-grey");
+  margin: 0 0 govuk-spacing(6);
+  padding-left: govuk-spacing(3);
+}

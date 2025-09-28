@@ -1,0 +1,17 @@
+@use "govuk-frontend/dist/govuk" as *;
+
+// Govspeak example callout
+// https://components.publishing.service.gov.uk/component-guide/govspeak/example
+// https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/components/govspeak/_example.scss
+//
+// 1. Non-zero padding on bottom to keep margin of last element inside parent,
+//    simulating padding
+[data-govspeak="example-callout"] {
+  border-left: govuk-spacing(2) solid govuk-colour("mid-grey");
+  margin: 0 0 govuk-spacing(4);
+  padding: govuk-spacing(4) 0 0.1234px govuk-spacing(4); // [1]
+
+  strong {
+    display: block;
+  }
+}
