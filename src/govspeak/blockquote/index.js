@@ -1,4 +1,4 @@
-import { addAttributeToRule } from '../govspeak-utils.js'
+import { addAttributeToRule } from '../../utils.js'
 
 /**
  * @import MarkdownIt from 'markdown-it'
