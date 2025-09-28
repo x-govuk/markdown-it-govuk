@@ -1,5 +1,8 @@
 @use "govuk-frontend/dist/govuk" as *;
 
+// Govspeak blockquote
+// https://components.publishing.service.gov.uk/component-guide/govspeak/blockquote
+// https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/components/govspeak/_typography.scss
 blockquote[data-govspeak="blockquote"] {
   margin: 0 0 govuk-spacing(4);
   padding: 0 0 0 govuk-spacing(6);

@@ -1,6 +1,5 @@
-import { getDefaultRenderer } from '../utils.js'
-
-import { createGovspeakBlockParser } from './govspeak-utils.js'
+import { getDefaultRenderer } from '../../utils.js'
+import { createGovspeakBlockParser } from '../govspeak-utils.js'
 
 /**
  * @import MarkdownIt from 'markdown-it'
