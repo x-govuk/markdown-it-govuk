@@ -5,7 +5,7 @@ import { govspeakInformationCallout } from './information-callout.js'
 import { govspeakWarningCallout } from './warning-callout.js'
 
 /**
- * @import MarkdownIt from "markdown-it"
+ * @import MarkdownIt from 'markdown-it'
  */
 
 /**
@@ -15,7 +15,13 @@ import { govspeakWarningCallout } from './warning-callout.js'
 /**
  * @type {GovspeakOption[]}
  */
-const availableGovspeakOptions = ['address', 'blockquote', 'example-callout', 'information-callout', 'warning-callout']
+const availableGovspeakOptions = [
+  'address',
+  'blockquote',
+  'example-callout',
+  'information-callout',
+  'warning-callout'
+]
 
 /**
  * Map of available Govspeak extensions to their implementation functions
@@ -31,9 +37,9 @@ export const availableGovspeakExtensions = new Map([
 ])
 
 /**
- * Get the available Govspeak options.
+ * Get available Govspeak options
  *
- * @param {boolean|GovspeakOption[]|null} govspeakOptions 
+ * @param {boolean|GovspeakOption[]|null} govspeakOptions
  * @returns {GovspeakOption[]} - Array of available Govspeak options
  */
 export function getGovspeakOptions(govspeakOptions) {
@@ -49,11 +55,11 @@ export function getGovspeakOptions(govspeakOptions) {
 }
 
 /**
- * Configures Govspeak extensions for the given MarkdownIt instance.
+ * Configure Govspeak extensions for the given MarkdownIt instance
  *
- * @param {MarkdownIt} md - The MarkdownIt instance.
- * @param {GovspeakOption[]} govspeakOptions - The array of Govspeak options to enable.
- * @param {object} brand - The brand configuration object.
+ * @param {MarkdownIt} md - MarkdownIt instance
+ * @param {GovspeakOption[]} govspeakOptions - Govspeak options to enable
+ * @param {object} brand - Brand configuration
  */
 export function configureGovspeak(md, govspeakOptions, brand) {
   for (const key of govspeakOptions) {
@@ -62,7 +68,7 @@ export function configureGovspeak(md, govspeakOptions, brand) {
       implementation(md)
     }
 
-    // remove default blockquote css rules when blockquote is enabled
+    // Remove default blockquote CSS rules when blockquote enabled
     if (key === 'blockquote') {
       delete brand.rules.blockquote_open
     }
