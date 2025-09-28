@@ -1,8 +1,7 @@
 import { addAttributeToRule } from './govspeak-utils.js'
-import { getDefaultRenderer } from '../utils.js'
 
 /**
- * @import MarkdownIt from "markdown-it"
+ * @import MarkdownIt from 'markdown-it'
  */
 
 const tokenType = 'blockquote'
@@ -11,14 +10,12 @@ const tokenAttrs = {
 }
 
 /**
- * Get block quote renderer
+ * Get blockquote renderer
  *
- * @param {MarkdownIt} md - markdown-it instance
- * @returns {MarkdownIt.Renderer.RenderRule} - render rule
+ * @param {MarkdownIt} md - MarkdownIt instance
+ * @returns {MarkdownIt.Renderer.RenderRule} - Render rule
  */
 function getBlockQuoteOpenRenderer(md) {
-  const defaultRenderer = getDefaultRenderer(md, `${tokenType}_open`)
-
   return (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
@@ -29,13 +26,13 @@ function getBlockQuoteOpenRenderer(md) {
 }
 
 /**
- * Govspeak-style blockquote.
+ * Govspeak-style blockquote
  *
- * @param {MarkdownIt} md - markdown-it instance
+ * @param {MarkdownIt} md - MarkdownIt instance
  * @returns {void}
  */
 export function govspeakBlockquote(md) {
   const blockQuoteOpenRenderer = getBlockQuoteOpenRenderer(md)
 
-  md.renderer.rules[tokenType + '_open'] = blockQuoteOpenRenderer
+  md.renderer.rules[`${tokenType}_open`] = blockQuoteOpenRenderer
 }

@@ -1,7 +1,7 @@
 import { createGovspeakBlockParser } from './govspeak-utils.js'
 
 /**
- * @import MarkdownIt from "markdown-it"
+ * @import MarkdownIt from 'markdown-it'
  */
 
 const marker = '^'
@@ -12,14 +12,15 @@ const tokenAttrs = {
   role: 'note'
 }
 
-const {
-  emitMultiLine,
-  parseSingleLine
-} = createGovspeakBlockParser(marker, tokenType, tokenAttrs)
+const { emitMultiLine, parseSingleLine } = createGovspeakBlockParser(
+  marker,
+  tokenType,
+  tokenAttrs
+)
 
 /**
- * Govspeak-style information callout parser.
- * 
+ * Govspeak-style information callout parser
+ *
  * @type {MarkdownIt.ParserBlock.RuleBlock}
  */
 function parseInformationCallout(state, startLine, _endLine, silent) {
@@ -28,30 +29,33 @@ function parseInformationCallout(state, startLine, _endLine, silent) {
   const rawLine = state.src.slice(pos, max)
   const trimmedLine = rawLine.trimEnd()
 
-  // if it's indented more than 3 spaces, it should be a code block
-  if (state.sCount[startLine] - state.blkIndent >= 4) { return false }
+  // If indented by more than 3 spaces, should be a code block
+  if (state.sCount[startLine] - state.blkIndent >= 4) {
+    return false
+  }
 
   const content = parseSingleLine(trimmedLine, false)
 
-  if (content === null) { return false }
+  if (content === null) {
+    return false
+  }
 
-  if (silent) { return true }
+  if (silent) {
+    return true
+  }
 
   emitMultiLine(state, startLine, startLine, content)
   return true
 }
 
 /**
- * Govspeak-style information callout.
- * 
- * @param {MarkdownIt} md - markdown-it instance
+ * Govspeak-style information callout
+ *
+ * @param {MarkdownIt} md - MarkdownIt instance
  * @returns {void}
  */
 export function govspeakInformationCallout(md) {
-  md.block.ruler.before(
-    'paragraph',
-    tokenType,
-    parseInformationCallout,
-    { alt: ['paragraph', 'reference', 'blockquote', 'list'] }
-  )
+  md.block.ruler.before('paragraph', tokenType, parseInformationCallout, {
+    alt: ['paragraph', 'reference', 'blockquote', 'list']
+  })
 }

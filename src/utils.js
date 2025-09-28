@@ -1,5 +1,5 @@
 /**
- * @import MarkdownIt from "markdown-it"
+ * @import MarkdownIt from 'markdown-it'
  */
 
 /**
@@ -17,17 +17,20 @@ export const getDefaultRenderer = (md, rule) => {
     }
   )
 }
+
 /**
- * Add classes to a token’s class attribute in given markdown-it rule
+ * Add classes to a token’s class attribute in given MarkdownIt rule
  *
- * @param {MarkdownIt} md - markdown-it instance
+ * @param {MarkdownIt} md - MarkdownIt instance
  * @param {string} rule - Rule to modify
- * @param {string} classes - Classes to add to the rule’s token
+ * @param {string} classes - Classes to add to rule’s token
  */
 export const addClassesToRule = (md, rule, classes) => {
   const defaultRenderer = getDefaultRenderer(md, rule)
 
-  if (!classes) { return }
+  if (!classes) {
+    return
+  }
 
   md.renderer.rules[rule] = (tokens, idx, options, env, self) => {
     const token = tokens[idx]

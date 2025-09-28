@@ -1,8 +1,9 @@
-import { createGovspeakBlockParser } from './govspeak-utils.js'
 import { escapeHtml } from 'markdown-it/lib/common/utils.mjs'
 
+import { createGovspeakBlockParser } from './govspeak-utils.js'
+
 /**
- * @import MarkdownIt from "markdown-it"
+ * @import MarkdownIt from 'markdown-it'
  */
 
 const marker = '%'
@@ -13,13 +14,14 @@ const tokenAttrs = {
   role: 'note'
 }
 
-const {
-  emitMultiLine,
-  parseSingleLine
-} = createGovspeakBlockParser(marker, tokenType, tokenAttrs)
+const { emitMultiLine, parseSingleLine } = createGovspeakBlockParser(
+  marker,
+  tokenType,
+  tokenAttrs
+)
 
 /**
- * Govspeak-style warning callout parser.
+ * Govspeak-style warning callout parser
  *
  * @type {MarkdownIt.ParserBlock.RuleBlock}
  */
@@ -29,31 +31,34 @@ function parseWarningCallout(state, startLine, _endLine, silent) {
   const rawLine = state.src.slice(pos, max)
   const trimmedLine = rawLine.trimEnd()
 
-  // if it's indented more than 3 spaces, it should be a code block
-  if (state.sCount[startLine] - state.blkIndent >= 4) { return false }
+  // If indented by more than 3 spaces, should be a code block
+  if (state.sCount[startLine] - state.blkIndent >= 4) {
+    return false
+  }
 
   const content = parseSingleLine(trimmedLine, false)
 
-  if (content === null) { return false }
+  if (content === null) {
+    return false
+  }
 
-  if (silent) { return true }
+  if (silent) {
+    return true
+  }
 
   emitMultiLine(state, startLine, startLine, escapeHtml(content))
+
   return true
 }
 
 /**
- * Govspeak-style warning callout.
- * 
- * @param {MarkdownIt} md - markdown-it instance
+ * Govspeak-style warning callout
+ *
+ * @param {MarkdownIt} md - MarkdownIt instance
  * @returns {void}
  */
 export function govspeakWarningCallout(md) {
-  md.block.ruler.before(
-    'paragraph',
-    tokenType,
-    parseWarningCallout,
-    { alt: ['paragraph', 'reference', 'blockquote', 'list'] }
-  )
+  md.block.ruler.before('paragraph', tokenType, parseWarningCallout, {
+    alt: ['paragraph', 'reference', 'blockquote', 'list']
+  })
 }
-

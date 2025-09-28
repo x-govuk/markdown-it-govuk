@@ -1,4 +1,3 @@
-
 import { brands } from './src/brands.js'
 import { getGovspeakOptions, configureGovspeak } from './src/govspeak/index.js'
 import { getDefaultRenderer, addClassesToRule } from './src/utils.js'
@@ -11,7 +10,7 @@ const defaultOptions = {
 }
 
 /**
- * Adds GOV.UK typography classes to blockquotes, headings, paragraphs, links,
+ * Add GOV.UK typography classes to blockquotes, headings, paragraphs, links,
  * lists, section breaks and tables and updates references to local files in
  * links and images to friendly URLs
  *
