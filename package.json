@@ -60,8 +60,12 @@
       "import": "./index.js",
       "sass": "./src/_index.scss"
     },
+    "./govspeak": {
+      "sass": "./src/govspeak/_index.scss"
+    },
     "./highlight": {
-      "import": "./src/highlight/index.js"
+      "import": "./src/highlight/index.js",
+      "sass": "./src/highlight/_index.scss"
     }
   }
 }
