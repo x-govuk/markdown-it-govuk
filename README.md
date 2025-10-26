@@ -1,8 +1,8 @@
 # markdown-it-govuk · [![test](https://github.com/x-govuk/markdown-it-govuk/actions/workflows/test.yml/badge.svg)](https://github.com/x-govuk/markdown-it-govuk/actions/workflows/test.yml)
 
-Plugin for [markdown-it](https://github.com/markdown-it/markdown-it) to convert Markdown into GOV.UK Frontend-compliant HTML, inspired by the [`govuk_markdown`](https://github.com/DFE-Digital/govuk_markdown) Ruby gem. If you are using the [marked](https://marked.js.org/) parser, use [`govuk-markdown`](https://github.com/x-govuk/govuk-markdown).
+Plugin for [markdown-it](https://github.com/markdown-it/markdown-it) to convert Markdown into GOV.UK Frontend-compliant HTML, inspired by the [`govuk_markdown`](https://github.com/DFE-Digital/govuk_markdown) and [govspeak](https://github.com/alphagov/govspeak) Ruby gems.
 
-Don’t confuse this package with [govspeak](https://github.com/alphagov/govspeak), which is a Markdown dialect specifically built for the GOV.UK publishing system.
+If you are using the [marked](https://marked.js.org/) parser, use [`govuk-markdown`](https://github.com/x-govuk/govuk-markdown).
 
 ## Requirements
 
@@ -68,13 +68,13 @@ Will output:
 To provide styling for inline and block code, add the following to your Sass file:
 
 ```scss
-@import "markdown-it-govuk/src/index";
+@import "markdown-it-govuk/highlight";
 ```
 
 or using the Sass module system and `pkg:` importing:
 
 ```scss
-@forward "pkg:markdown-it-govuk";
+@forward "pkg:markdown-it-govuk/highlight";
 ```
 
 These styles rely on `govuk-frontend`, so make sure you have this installed as a dependency in your project.
@@ -137,9 +137,9 @@ Will output the following text, with the common fractions and correct multiplica
 
 ### Govspeak
 
-You can enable support for some [Govspeak](https://govspeak-preview.publishing.service.gov.uk/guide#callouts) markdown extensions by using the `govspeak` option.
+You can enable support for some [Govspeak](https://govspeak-preview.publishing.service.gov.uk/guide) markdown extensions by using the `govspeak` option.
 
-The following extensions are currently supported:
+This plugin supports the following extensions:
 
 - `address`
 - `blockquote`
@@ -157,6 +157,20 @@ const md = markdownit.use(markdownitGovuk, {
   govspeak: true
 })
 ```
+
+To provide styling for govspeak extensions, add the following to your Sass file:
+
+```scss
+@import "markdown-it-govuk/govspeak";
+```
+
+or using the Sass module system and `pkg:` importing:
+
+```scss
+@forward "pkg:markdown-it-govuk/govspeak";
+```
+
+These styles rely on `govuk-frontend`, so make sure you have this installed as a dependency in your project.
 
 #### Address
 
