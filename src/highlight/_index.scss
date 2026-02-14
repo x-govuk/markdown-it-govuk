@@ -11,7 +11,7 @@ $_code-color: #d13118;
 }
 
 .app-code--inline {
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
   color: $_code-color;
   font-size: 0.875em;
   padding: 2px govuk-spacing(1);
@@ -29,10 +29,11 @@ $_code-color: #d13118;
 .app-code--block {
   @include govuk-font(16, $line-height: 1.4);
   @include govuk-responsive-margin(4, "bottom");
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
   overflow: auto;
   padding: govuk-spacing(4);
-  scrollbar-color: $govuk-border-colour govuk-colour("light-grey");
+  scrollbar-color: $govuk-border-colour
+    govuk-colour("black", $variant: "tint-95");
 
   + .govuk-heading-l {
     padding-top: govuk-spacing(4);
@@ -60,7 +61,7 @@ $_code-color: #d13118;
 
 .app-code__comment,
 .app-code__quote {
-  color: govuk-tint(govuk-colour("dark-grey"), 30);
+  color: govuk-colour("black", $variant: "tint-50");
   font-style: italic;
 }
 
@@ -87,7 +88,7 @@ $_code-color: #d13118;
 .app-code__title,
 .app-code__section,
 .app-code__selector-id {
-  color: govuk-colour("bright-purple");
+  color: govuk-colour("magenta", $variant: "shade-25");
   font-weight: bold;
 }
 
@@ -97,14 +98,14 @@ $_code-color: #d13118;
 
 .app-code__type,
 .app-code__class .app-code__title {
-  color: govuk-colour("light-purple");
+  color: govuk-colour("purple", $variant: "tint-25");
   font-weight: bold;
 }
 
 .app-code__tag,
 .app-code__name,
 .app-code__attribute {
-  color: govuk-colour("dark-blue");
+  color: govuk-colour("blue", $variant: "shade-50");
   font-weight: normal;
 }
 
@@ -124,16 +125,16 @@ $_code-color: #d13118;
 }
 
 .app-code__meta {
-  color: govuk-colour("dark-grey");
+  color: govuk-colour("black", $variant: "tint-25");
   font-weight: bold;
 }
 
 .app-code__deletion {
-  background: govuk-tint(govuk-colour("red"), 80);
+  background: govuk-colour("red", $variant: "tint-80");
 }
 
 .app-code__addition {
-  background: govuk-tint(govuk-colour("green"), 80);
+  background: govuk-colour("green", $variant: "tint-80");
 }
 
 .app-code__emphasis {
