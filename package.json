@@ -49,12 +49,12 @@
     "test": "node --test"
   },
   "dependencies": {
-    "highlight.js": "^11.5.0"
+    "highlight.js": "^11.5.0",
+    "markdown-it": "^14.0.0"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.0.0",
-    "@x-govuk/eslint-config": "^0.0.1",
-    "markdown-it": "^14.0.0",
+    "@x-govuk/eslint-config": "^0.0.2",
     "markdown-it-testgen": "^0.1.6",
     "np": "^11.0.0",
     "prettier": "^3.1.0",
