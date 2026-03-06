@@ -12,30 +12,41 @@
   "bugs": {
     "url": "https://github.com/x-govuk/markdown-it-govuk/issues"
   },
-  "license": "MIT",
-  "files": [
-    "src",
-    "index.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/x-govuk/markdown-it-govuk.git"
   },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "sass": "./src/_index.scss"
+    },
+    "./govspeak": {
+      "sass": "./src/govspeak/_index.scss"
+    },
+    "./highlight": {
+      "import": "./src/highlight/index.js",
+      "sass": "./src/highlight/_index.scss"
+    }
+  },
+  "files": [
+    "src",
+    "index.js"
+  ],
   "scripts": {
-    "lint:prettier": "prettier . --check",
-    "lint:prettier:fix": "prettier . --write",
-    "lint:js": "eslint '**/*.js'",
-    "lint:js:fix": "eslint '**/*.js' --fix",
-    "lint:scss": "stylelint '**/*.scss'",
-    "lint:scss:fix": "stylelint '**/*.scss' --fix",
+    "coverage": "node --test --experimental-test-coverage",
     "lint": "npm run lint:prettier && npm run lint:js && npm run lint:scss",
     "lint:fix": "npm run lint:prettier:fix && npm run lint:js:fix && npm run lint:scss:fix",
-    "test": "node --test",
-    "coverage": "node --test --experimental-test-coverage",
-    "release": "np --no-publish"
-  },
-  "publishConfig": {
-    "access": "public"
+    "lint:js": "eslint '**/*.js'",
+    "lint:js:fix": "eslint '**/*.js' --fix",
+    "lint:prettier": "prettier . --check",
+    "lint:prettier:fix": "prettier . --write",
+    "lint:scss": "stylelint '**/*.scss'",
+    "lint:scss:fix": "stylelint '**/*.scss' --fix",
+    "release": "np --no-publish",
+    "test": "node --test"
   },
   "dependencies": {
     "highlight.js": "^11.5.0"
@@ -54,18 +65,7 @@
   "engines": {
     "node": ">=22"
   },
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "sass": "./src/_index.scss"
-    },
-    "./govspeak": {
-      "sass": "./src/govspeak/_index.scss"
-    },
-    "./highlight": {
-      "import": "./src/highlight/index.js",
-      "sass": "./src/highlight/_index.scss"
-    }
+  "publishConfig": {
+    "access": "public"
   }
 }
