@@ -12,10 +12,9 @@ const tokenAttrs = {
 /**
  * Get blockquote renderer
  *
- * @param {MarkdownIt} md - MarkdownIt instance
  * @returns {MarkdownIt.Renderer.RenderRule} - Render rule
  */
-function getBlockQuoteOpenRenderer(md) {
+function getBlockQuoteOpenRenderer() {
   return (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
@@ -32,7 +31,7 @@ function getBlockQuoteOpenRenderer(md) {
  * @returns {void}
  */
 export function govspeakBlockquote(md) {
-  const blockQuoteOpenRenderer = getBlockQuoteOpenRenderer(md)
+  const blockQuoteOpenRenderer = getBlockQuoteOpenRenderer()
 
   md.renderer.rules[`${tokenType}_open`] = blockQuoteOpenRenderer
 }

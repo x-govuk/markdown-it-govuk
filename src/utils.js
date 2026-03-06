@@ -6,7 +6,7 @@
  * Add attributes to a token
  *
  * @param {MarkdownIt.Token} token - Token to modify
- * @param {Object.<string, string>} tokenAttrs - Attributes to add
+ * @param {{[key: string]: string}} tokenAttrs - Attributes to add
  */
 export function addAttributeToRule(token, tokenAttrs) {
   for (const [attr, value] of Object.entries(tokenAttrs)) {
@@ -50,7 +50,7 @@ export const addClassesToRule = (md, rule, classes) => {
  *
  * @param {MarkdownIt} md - markdown-it instance
  * @param {string} rule - Rule to modify
- * @returns {Function} - Renderer for the given rule
+ * @returns {import('markdown-it/lib/renderer.mjs').RenderRule} - Renderer for the given rule
  */
 export const getDefaultRenderer = (md, rule) => {
   return (

@@ -12,7 +12,7 @@ import { addAttributeToRule } from '../utils.js'
  *
  * @param {string} marker - Character(s) that define the block boundaries
  * @param {string} tokenType - Base name for the generated tokens
- * @param {Object.<string, string>} [tokenAttrs={}] - HTML attributes to add to the block’s container
+ * @param {{[key: string]: string}} [tokenAttrs] - HTML attributes to add to the block’s container
  * @returns {UtilFunctions} Object containing the specialised parser functions
  */
 export function createGovspeakBlockParser(marker, tokenType, tokenAttrs = {}) {
@@ -20,7 +20,7 @@ export function createGovspeakBlockParser(marker, tokenType, tokenAttrs = {}) {
   const INLINE_CLOSING_RE = new RegExp(`^(.*\\S)\\s+${escMarker}\\s*$`)
 
   /**
-   * @typedef {Object} UtilFunctions - Utility functions returned by createGovspeakBlockParser
+   * @typedef {object} UtilFunctions - Utility functions returned by createGovspeakBlockParser
    * @property {typeof parseMultiLine} parseMultiLine - Parser for multi-line blocks
    * @property {typeof emitMultiLine} emitMultiLine - Function to emit tokens for multi-line blocks
    * @property {typeof emitSingleLine} emitSingleLine - Function to emit tokens for single-line blocks
